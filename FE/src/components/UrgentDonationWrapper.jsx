@@ -29,7 +29,7 @@ const UrgentDonationWrapper = () => {
   const [conflict, setConflict] = useState(null);
   const [changing, setChanging] = useState(false);
   const [selectedMode, setSelectedMode] = useState("EMERGENCY_FLEXIBLE");
-  const [readinessOptions] = useState(["EMERGENCY_NOW", "EMERGENCY_FLEXIBLE"]);
+  const [readinessOptions] = useState(["EMERGENCY_NOW"]);
 const [isUndecided, setIsUndecided] = useState(false);
   const handleAccept = () => {
     if (!userId) navigate("/login");
@@ -42,10 +42,10 @@ const [isUndecided, setIsUndecided] = useState(false);
         {},
         { headers: { Authorization: `Bearer ${user?.accessToken}` } }
       );
-      message.success("✅ Bạn đã rút khỏi nhóm hiến máu khẩn cấp.");
+      message.success("  Bạn đã rút khỏi nhóm hiến máu khẩn cấp.");
       fetchCurrentStatus();
     } catch (err) {
-      console.error("❌ Leave group failed:", err);
+      console.error("  Leave group failed:", err);
       message.error("Không thể rút khỏi nhóm");
     }
   };
@@ -71,7 +71,7 @@ const fetchCurrentStatus = async () => {
       message: "Bạn đang ở chế độ khác, hãy xác nhận nếu muốn thay đổi.",
     });
   } catch (err) {
-    console.error("❌ Cannot fetch current status:", err);
+    console.error("  Cannot fetch current status:", err);
   }
 };
 const readinessLabels = {
@@ -92,11 +92,11 @@ const readinessLabels = {
         { readinessLevel: newLevel },
         { headers: { Authorization: `Bearer ${user?.accessToken}` } }
       );
-      message.success("✅ Đã chuyển sang chế độ " + newLevel.replace("_", " "));
+      message.success("Đã chuyển sang chế độ Sẵn sàng ngay");
       setSelectedMode(newLevel);
       fetchCurrentStatus();
     } catch (err) {
-      console.error("❌ Change readiness failed:", err);
+      console.error("  Change readiness failed:", err);
       message.error("Không thể chuyển chế độ");
     } finally {
       setChanging(false);
@@ -182,26 +182,30 @@ const readinessLabels = {
     }}
   >
     <div>
-      <Text style={{ fontWeight: 600, color: "#d48806" }}>
-        ⚠ Bạn đã đăng ký ở chế độ khác
-      </Text>
-      <div style={{ marginTop: 4 }}>
-        <Text>Hiện tại bạn đang ở chế độ: </Text>
-        <Select
-          value={readinessLabels[conflict.currentMode]}
-          disabled={changing}
-          size="small"
-          style={{ minWidth: 200 }}
-          onChange={handleChangeReadiness}
-          options={readinessOptions
-            .filter((level) => level !== conflict.currentMode)
-            .map((level) => ({
-              value: level,
-              label: level.replace("_", " "),
-            }))}
-          dropdownMatchSelectWidth={false}
-        />
-      </div>
+  <Text style={{ fontWeight: 600, color: "#d48806" }}>
+    ⚠ Bạn đã đăng ký ở chế độ khác
+  </Text>
+  <div style={{ marginTop: 4 }}>
+    <Text>Hiện tại bạn đang ở chế độ: </Text>
+    {conflict.currentMode === "EMERGENCY_NOW" ? (
+      <Text>Sẵn sàng ngay</Text>
+    ) : (
+      <Select
+  value={readinessLabels[conflict.currentMode] || conflict.currentMode}
+  disabled={changing}
+  size="small"
+  style={{ minWidth: 200 }}
+  onChange={handleChangeReadiness}
+  options={readinessOptions
+    .filter((level) => level !== conflict.currentMode)
+    .map((level) => ({
+      value: level,
+      label: readinessLabels[level] || level.replace("_", " ") // Hiển thị nhãn tiếng Việt nếu có
+    }))}
+  dropdownMatchSelectWidth={false}
+/>
+    )}
+  </div>
       <div>
         <Text style={{ fontStyle: "italic" }}>
           Lưu ý: {conflict.message || "Hãy xác nhận lại trước khi chuyển đổi chế độ."}

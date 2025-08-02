@@ -337,5 +337,4 @@ const InventoryChart = () => {
     </div>
   );
 };
-
 export default InventoryChart;

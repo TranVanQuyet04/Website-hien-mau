@@ -289,13 +289,13 @@ const handleSubmit = async (values) => {
               >
                 <Select size="large" style={{ borderRadius: "8px" }}>
                   <Option value="PENDING">
-                    <span style={{ color: "#faad14" }}>🕐 Đang xử lý</span>
+                    <span style={{ color: "#faad14" }}>Đang xử lý</span>
                   </Option>
                   <Option value="SUCCESS">
-                    <span style={{ color: "#52c41a" }}>✅ Thành công</span>
+                    <span style={{ color: "#52c41a" }}>Thành công</span>
                   </Option>
                   <Option value="FAILED">
-                    <span style={{ color: "#ff4d4f" }}>❌ Thất bại</span>
+                    <span style={{ color: "#ff4d4f" }}>Trả sau</span>
                   </Option>
                 </Select>
               </Form.Item>

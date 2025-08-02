@@ -45,6 +45,11 @@ const StaffBloodRequests = () => {
   const [statusFilter, setStatusFilter] = useState('all');
   const [dateRange, setDateRange] = useState(null);
   const [timePeriod, setTimePeriod] = useState('custom');
+  const [pagination, setPagination] = useState({
+  current: 1,
+  pageSize: 10,
+  total: 0,
+});
 
   // Cấu hình hiển thị trạng thái
   const statusConfig = {

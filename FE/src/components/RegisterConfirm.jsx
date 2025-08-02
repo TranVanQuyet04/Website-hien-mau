@@ -47,23 +47,23 @@ const handleSubmit = async () => {
   setLoading(true);
 
   try {
-    // ⚠️ CHUYỂN ĐỔI dữ liệu theo API backend yêu cầu
-    const finalFormData = {
-      username: formData.username,
-      password: formData.password,
-      fullName: formData.fullName,
-      dob: formData.dob,
-      cccd: formData.docNumber,
-      occupation: formData.occupation,
-      gender: formData.gender,
-      contactInfo: {
-        email: formData.email,
-        phone: formData.phone,
-      },
-      role: formData.role || "MEMBER" // fallback nếu chưa chọn vai trò
-    };
-
-  console.log("finalFormData gửi đi:", finalFormData);
+    // CHUYỂN ĐỔI dữ liệu theo API backend yêu cầu
+  const finalFormData = {
+  username: formData.username,
+  password: formData.password,
+  fullName: formData.fullName,
+  dob: formData.dob,
+  cccd: formData.docNumber,
+  occupation: formData.occupation,
+  gender: formData.gender,
+  contactInfo: {
+    email: formData.email,
+    phone: formData.phone,
+  },
+  role: formData.role || "MEMBER", // fallback nếu chưa chọn vai trò
+  addressId: 68
+   // thêm addressId vào finalFormData
+};
 
     const response = await axios.post(
       "http://localhost:8080/api/auth/register",

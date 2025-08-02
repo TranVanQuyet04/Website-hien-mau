@@ -45,8 +45,7 @@ import DonationConfirm from "./components/DonationConfirm";
 import StaffDonationHistory from "./components/StaffDonationHistory";
 import InventoryChart from "./components/InventoryChart";
 import StaffStatistics from "./components/StaffStatistics";
-// import BloodUnitList from "./components/BloodUnitList"; 
-import BloodUnitList from "./components/BloodUnitList.jsx";
+import BloodUnitList from "./components/BloodUnitList"; 
 import UrgentRequests from "./components/UrgentRequests"; // chỉ import 1 lần
 import BloodUnitUsedList from "./components/BloodUnitUsedList";
 import StaffBloodRequests from "./components/StaffBloodRequests";

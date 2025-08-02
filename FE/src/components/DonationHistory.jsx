@@ -68,18 +68,15 @@ const donatedHistory = history.filter((item) => item.status === "DONATED");
       render: (date) => dayjs(date).format("DD/MM/YYYY"),
     },
     {
+  title: "👤 Người hiến",
+  dataIndex: "fullName",
+  render: (fullName) => fullName || "—",
+},
+    {
       title: "🏥 Địa điểm",
       dataIndex: "location",
     },
-    // {
-    //   title: "🩸 Thể tích",
-    //   dataIndex: "volume_ml",
-    //   render: (v) => `${v}ml`,
-    // },
-    // {
-    //   title: "🧬 Nhóm máu",
-    //   dataIndex: "blood_type",
-    // },
+
     {
       title: "📦 Trạng thái",
       dataIndex: "status",
@@ -107,10 +104,7 @@ const donatedHistory = history.filter((item) => item.status === "DONATED");
                 <CalendarOutlined style={{ marginRight: 4 }} />
                 {new Date().toLocaleDateString('vi-VN')}
               </Text>
-              <Text type="secondary">
-                <UserOutlined style={{ marginRight: 4 }} />
-                Quản trị viên
-              </Text>
+
             </Space>
           </Col>
         </Row>

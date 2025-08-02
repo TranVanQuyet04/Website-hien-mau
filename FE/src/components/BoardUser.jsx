@@ -25,7 +25,16 @@ const BoardUser = () => {
 
     fetchProfile();
   }, []);
-
+  const bloodTypeMap = {
+    1: 'A',
+    2: 'A',
+    3: 'B',
+    4: 'B',
+    5: 'AB',
+    6: 'AB',
+    7: 'O',
+    8: 'O',
+  };
   return (
     <div className="p-6 min-h-[calc(100vh-64px)] bg-gray-50 flex justify-center overflow-y-auto overflow-x-hidden">
       <div className="w-full max-w-[800px]">
@@ -58,8 +67,9 @@ const BoardUser = () => {
               </Descriptions.Item>
               <Descriptions.Item label="Email">{userDetail.email}</Descriptions.Item>
               <Descriptions.Item label="Nhóm máu">
-                {userDetail.bloodType || "Chưa cập nhật"}
+                {bloodTypeMap[userDetail.bloodTypeId] || "Chưa cập nhật"}
               </Descriptions.Item>
+
               <Descriptions.Item label="Địa chỉ">{userDetail.addressFull}</Descriptions.Item>
               <Descriptions.Item label="Số điện thoại">{userDetail.phone}</Descriptions.Item>
             </Descriptions>

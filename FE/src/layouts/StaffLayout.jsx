@@ -30,7 +30,7 @@ const StaffLayout = () => {
 
   const staffMenuItems = [
     { key: 'requests', icon: <ExclamationCircleOutlined />, label: 'Yêu cầu truyền máu', path: '/staff/requests' },
-    { key: 'blood-requests', icon: <ExclamationCircleOutlined />, label: 'Yêu cầu máu', path: '/staff/blood-requests' },
+    { key: 'blood-requests', icon: <ExclamationCircleOutlined />, label: 'Danh sách yêu cầu máu', path: '/staff/blood-requests' },
     { key: 'donation-confirm', icon: <HeartOutlined />, label: 'Xác nhận hiến máu', path: '/staff/donation-confirm' },
     // { key: 'inventory', icon: <ExperimentOutlined />, label: 'Quản lý kho máu', path: '/staff/inventory' },
     { key: 'donation-history', icon: <HistoryOutlined />, label: 'Lịch sử hiến máu', path: '/staff/donation-history' },

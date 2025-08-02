@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { message } from "antd";
 import {
     Layout,
     Menu,
@@ -51,8 +52,13 @@ const Navbar = () => {
 const handleLogout = () => {
   AuthService.logout();
   setCurrentUser(null);
-  navigate("/login");
+  message.success("Đăng xuất thành công");
+
+  setTimeout(() => {
+    window.location.href = "/login"; // ✅ hard reload đảm bảo reset app state
+  }, 1000);
 };
+
 // ⬇️ Tất cả các useState đặt trước
 const [currentUser, setCurrentUser] = useState(null);
 const [showAdminBoard, setShowAdminBoard] = useState(false);

@@ -205,6 +205,7 @@ const mapped = res.data.map((item) => ({
   priority: mapTriageToColor[item.triageLevel]?.label || 'Không rõ',
   status: item.status,
   createdDate: formatDate(item.createdAt),
+   rawDate: new Date(item.createdAt),
   requester: {
     name: `#${item.requesterId}`,
     phone: item.requesterPhone || '—',
@@ -419,15 +420,7 @@ const handleStatusChange = async (recordId, newStatus) => {
     align: 'center',
     render: (_, __, index) => index + 1,
   },
-    {
-  title: 'ID',
-  dataIndex: 'id',
-  key: 'id',
-  width: 60,
-  align: 'center',
-  sorter: (a, b) => a.id - b.id,
-  defaultSortOrder: 'descend',
-},
+  
     {
       title: 'Bệnh nhân',
       dataIndex: 'patientName',
@@ -469,7 +462,7 @@ const handleStatusChange = async (recordId, newStatus) => {
   title: 'Đơn vị máu sẵn có',
   dataIndex: 'bloodUnitId',
   key: 'bloodUnitId',
-  width: 250,
+  width: 125,
   render: (_, record) => (
   <div>
     {record.selectedUnits && record.selectedUnits.length > 0 ? (
@@ -480,9 +473,7 @@ const handleStatusChange = async (recordId, newStatus) => {
           {record.selectedUnits.reduce((sum, u) => sum + (u.quantityMl || 0), 0)} ml
         </span>
       </>
-    ) : (
-      <span style={{ color: 'gray' }}>Chưa chọn</span>
-    )}
+    ) : null}
     <br />
     <button
       style={{
@@ -642,7 +633,9 @@ const bloodComponentReverseMap = {
       title: 'Ngày tạo',
       dataIndex: 'createdDate',
       key: 'createdDate',
-      width: 120,
+      width: 160,
+      defaultSortOrder: 'descend',
+      sorter: (a, b) => a.rawDate - b.rawDate, // dùng rawDate để so sánh
       render: (text) => (
         <div className="flex items-center">
           <CalendarOutlined className="mr-1 text-gray-500" />
@@ -754,7 +747,7 @@ const bloodComponentReverseMap = {
             </Text>
             <Text type="secondary">
               <UserOutlined style={{ marginRight: 4 }} />
-              Quản trị viên
+               Nhân viên
             </Text>
           </Space>
         </Col>

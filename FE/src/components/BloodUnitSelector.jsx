@@ -101,16 +101,17 @@ const BloodUnitSelector = ({ id, onSelect }) => {
       ellipsis: true,
     },
     {
-      title: 'Trạng thái',
-      dataIndex: 'status',
-      key: 'status',
-      width: 100,
-      render: status => (
-        <Text type={status === 'AVAILABLE' ? 'success' : 'danger'}>
-          {status}
-        </Text>
-      )
-    }
+  title: 'Trạng thái',
+  dataIndex: 'status',
+  key: 'status',
+  width: 100,
+  render: status => (
+    <Text type={status === 'AVAILABLE' ? 'success' : 'danger'}>
+      {status === 'AVAILABLE' ? 'Có sẵn' : status}
+    </Text>
+  )
+}
+
   ];
 
   const rowSelection = {

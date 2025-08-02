@@ -90,7 +90,7 @@ export default function Login() {
                 <Form form={form} onFinish={handleLogin} layout="vertical" size="large">
                   <Form.Item
                     name="username"
-                    label={<span>Username <span className="required">*</span></span>}
+                    label={<span>Username <span className="required"></span></span>}
                     rules={[{ required: true, message: "Vui lòng nhập username!" }]}
                   >
                     <Input prefix={<UserOutlined />} placeholder="Nhập username" />
@@ -98,7 +98,7 @@ export default function Login() {
 
                   <Form.Item
                     name="password"
-                    label={<span>Password <span className="required">*</span></span>}
+                    label={<span>Password <span className="required"></span></span>}
                     rules={[
                       { required: true, message: "Vui lòng nhập password!" },
                       { min: 6, message: "Password phải từ 6 ký tự trở lên!" }
@@ -112,9 +112,9 @@ export default function Login() {
                   </Form.Item>
 
                   <div className="forgot-wrapper">
-                    <Button type="link" className="login-link" onClick={() => navigate("/forgot")}>
+                    {/* <Button type="link" className="login-link" onClick={() => navigate("/forgot")}>
                       Bạn quên mật khẩu?
-                    </Button>
+                    </Button> */}
                   </div>
 
                   <Form.Item>

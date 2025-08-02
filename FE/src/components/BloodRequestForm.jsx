@@ -317,7 +317,7 @@ useEffect(() => {
                 </Text>
                 <Text type="secondary">
                   <UserOutlined style={{ marginRight: 4 }} />
-                  Quản trị viên
+                  Nhân Viên
                 </Text>
               </Space>
             </Col>

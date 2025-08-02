@@ -237,7 +237,7 @@ const BloodUnitList = () => {
               </Text>
               <Text type="secondary">
                 <UserOutlined style={{ marginRight: 4 }} />
-                Quản trị viên
+                 Nhân viên
               </Text>
             </Space>
           </Col>

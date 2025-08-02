@@ -76,7 +76,7 @@
 }
 
 .login-fullpage {
-  background-image: url("/9069379.jpg");
+  background-image: url("/public/9069379.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -87,7 +87,7 @@
 }
 
 .change-fullpage {
-  background-image: url("/9069379.jpg");
+  background-image: url("/public/9069379.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -108,7 +108,7 @@
 }
 
 .regis-fullpage {
-  background-image: url("/9069379.jpg");
+  background-image: url("/public/9069379.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
