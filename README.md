@@ -85,7 +85,7 @@ Xác thực & Phân quyền:
  - ADMIN: Toàn quyền hệ thống
  - STAFF: Nhân viên xử lý yêu cầu
  - DOCTOR: Bác sĩ tiếp nhận / đánh giá chuyên môn
- - MEMBER: Người dùng hệ thống (bệnh nhân, người hiến máu, staff, admin)
+ - MEMBER: Người dùng hệ thống (bệnh nhân, người hiến máu,...)
    
 ## 🛡 Logic bảo mật
 
