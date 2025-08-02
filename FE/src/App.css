@@ -1,0 +1,236 @@
+
+.stepper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; 
+  width: 100%;
+  position: relative;
+  margin-bottom: 30px;
+}
+.step-item {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+  
+.step-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 25px;
+  left: 100%;
+  width: 100%;
+  height: 4px;
+  background: #ccc;
+  z-index: 0;
+}
+
+.step-item.active:not(:last-child)::after {
+  background: #771813;
+}
+
+.step-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 25px;
+  /* giữa icon */
+  left: 50%;
+  right: -50%;
+  height: 4px;
+  background: #ccc;
+  z-index: 0;
+}
+
+.step-item:not(:last-child).active::after {
+  background: #771813;
+}
+
+.step-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #ccc;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+.step-icon.active {
+  background: #771813;
+}
+
+.step-label {
+  margin-top: 8px;
+  font-size: 14px;
+  color: gray;
+}
+
+.step-label.active {
+  color: #771813;
+  font-weight: 500;
+}
+
+.login-fullpage {
+  background-image: url("/9069379.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.change-fullpage {
+  background-image: url("/9069379.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 92.4vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 0;
+}
+
+.change-box {
+  background: white;
+  padding: 40px 120px;
+  border-radius: 12px;
+  max-width: 700px;
+  width: 100%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.regis-fullpage {
+  background-image: url("/9069379.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  gap: 40px;
+  min-height: 100vh;
+  justify-content: center;
+  padding: 30px 60px;
+}
+
+.profile-left {
+  flex: 1;
+  border-radius: 12px;
+  max-width: 750px;
+}
+
+.profile-right {
+  flex: 1;
+  padding: 40px 60px;
+  background: white;
+  border-radius: 12px;
+  height: fit-content;
+  max-width: 600px;
+}
+
+.history-list {
+  list-style: none;
+  padding: 0;
+  line-height: 2rem;
+}
+
+@media (max-width: 768px) {
+  .regis-fullpage {
+    background: rgba(0, 0, 0, 0.5);
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .profile-left,
+  .profile-right {
+    max-width: 90%;
+    width: 100%;
+  }
+
+  .profile-right {
+    border-left: none;
+  }
+}
+
+.card-container.card {
+  max-width: 350px !important;
+  padding: 40px 40px;
+
+}
+
+.card {
+  background-color: #ffffff;
+  padding: 20px 25px 30px;
+  margin: 0 auto 25px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 16px rgba(119, 24, 19, 0.2);
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+.profile-img-card {
+  background-color: #fff;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+  display: block;
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  margin-bottom: 16px;
+}
+
+.text-danger {
+  font-size: 0.85rem;
+}
+
+.alert-custom-red {
+  background-color: #fcebea;
+  border: 1px solid #dd2d24;
+  color: #771813;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.btn-gradient-red {
+  background: linear-gradient(to right, #771813, #DD2D24);
+  color: white;
+  border: none;
+  transition: opacity 0.3s;
+}
+
+.btn-gradient-red:hover {
+  opacity: 0.9;
+}
+
+.form-control:focus {
+  border-color: #DD2D24;
+  box-shadow: 0 0 0 0.2rem rgba(221, 45, 36, 0.25);
+}
+
+.navbar-custom {
+  background: linear-gradient(to right, #771813, #DD2D24);
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+  color: white;
+}
+
+.navbar-custom .nav-link:hover {
+  opacity: 0.85;
+}

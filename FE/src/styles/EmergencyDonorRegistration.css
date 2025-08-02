@@ -1,0 +1,102 @@
+.emergency-register-page {
+  background-color: #f6f7fb;
+  min-height: 100vh;
+  padding: 40px 16px;
+  display: flex;
+  justify-content: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.emergency-register-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  padding: 32px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.emergency-register-card h2 {
+  color: #b71c1c;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.grid-2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.emergency-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.emergency-input,
+.emergency-select,
+.emergency-textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+}
+
+.emergency-input:focus,
+.emergency-select:focus,
+.emergency-textarea:focus {
+  border-color: #dd2d24;
+  outline: none;
+}
+
+.emergency-checkbox-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 16px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.emergency-checkbox-container a {
+  color: #1976d2;
+  text-decoration: underline;
+}
+
+.emergency-submit-btn {
+  background-color: #d32f2f;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 24px;
+  width: 100%;
+}
+
+.emergency-submit-btn:hover {
+  background-color: #b71c1c;
+}
+
+@media (max-width: 768px) {
+  .grid-2 {
+    grid-template-columns: 1fr !important;
+  }
+
+  .emergency-submit-btn {
+    font-size: 14px;
+  }
+}

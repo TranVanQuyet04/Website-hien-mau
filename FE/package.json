@@ -1,0 +1,75 @@
+{
+  "name": "react-hooks-login-registration",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/material": "^7.1.1",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
+    "@testing-library/user-event": "^13.2.1",
+    "antd": "^5.26.2",
+    "antd-input-otp": "^2.1.0",
+    "axios": "^0.24.0",
+    "bcrypt": "^6.0.0",
+    "bootstrap": "4.6.0",
+    "chart.js": "^4.5.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "file-saver": "^2.0.5",
+    "framer-motion": "^5.5.5",
+    "http-proxy-middleware": "^2.0.1",
+    "jspdf": "^3.0.1",
+    "lucide-react": "^0.522.0",
+    "moment": "^2.30.1",
+    "mssql": "^11.0.1",
+    "react": "^17.0.2",
+    "react-chartjs-2": "^5.3.0",
+    "react-countup": "^6.5.3",
+    "react-dom": "^17.0.2",
+    "react-icons": "^5.5.0",
+    "react-modal": "^3.16.3",
+    "react-router-dom": "^6.30.1",
+    "react-select": "^5.10.1",
+    "react-toastify": "^8.2.0",
+    "react-tooltip": "^5.29.1",
+    "react-validation": "^3.0.7",
+    "recharts": "^3.1.0",
+    "scrollreveal": "^4.0.9",
+    "validator": "^13.7.0",
+    "web-vitals": "^2.1.0",
+    "xlsx": "^0.18.5"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.5.2",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.10",
+    "vite": "^6.3.5"
+  }
+}

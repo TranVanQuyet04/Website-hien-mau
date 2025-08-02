@@ -1,0 +1,177 @@
+/* biến màu chung */
+:root {
+  --primary: #771813;
+  --primary-light: #DD2D24;
+  --danger: #ff4d4f;
+  --overlay: rgba(0,0,0,0.4);
+}
+
+/* toàn trang */
+.login-fullpage {
+  background: url('/9069379.jpg') center/cover no-repeat;
+}
+.login-row {
+  height: 100vh;
+  width: 100%;
+}
+
+/* HERO bên trái */
+.hero-col .hero-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 60px;
+}
+.hero-header {
+  text-align: center;
+}
+.hero-icon {
+  font-size: 48px;
+  color: var(--danger);
+  margin-bottom: 16px;
+}
+.hero-title {
+  color: white;
+  margin: 0;
+  font-size: 32px;
+  font-weight: bold;
+}
+.hero-desc {
+  color: rgba(255,255,255,0.9);
+  font-size: 16px;
+  line-height: 1.8;
+  margin: 0;
+}
+.highlight {
+  color: #ff7875;
+}
+
+/* FORM bên phải */
+.form-col .form-wrapper {
+background: #fff;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.login-card {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 20px;
+  border: none !important;
+}
+.login-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+.profile-img-card {
+  display: block;
+  width: 80px; height: 80px;
+  margin: 0 auto 16px;
+  padding: 10px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+.login-title {
+  color: var(--primary) !important;
+  margin: 0;
+  font-weight: 600 !important;
+}
+
+/* input, button */
+.login-card .ant-input,
+.login-card .ant-input-password {
+  height: 48px;
+  border-radius: 8px;
+  font-size: 16px;
+}
+.btn-gradient {
+  height: 48px;
+  background: linear-gradient(to right, var(--primary), var(--primary-light));
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  box-shadow: 0 4px 16px rgba(119,24,19,0.3);
+}
+.login-link {
+  color: var(--primary) !important;
+  padding: 0;
+}
+.forgot-wrapper {
+  text-align: right;
+  margin-bottom: 16px;
+}
+.register-wrapper {
+  text-align: center;
+  margin-top: 8px;
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .login-row {
+    flex-direction: column;
+  }
+  .hero-col, .form-col {
+    width: 100% !important;
+    padding: 0 !important;
+  }
+}
+
+/* Unified styles cho cả AffixWrapper và input */
+.login-card .ant-input-affix-wrapper,
+.login-card .ant-input {
+  height: 48px;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+/* Cho chắc chắn input bên trong phủ kín wrapper */
+.login-card .ant-input-affix-wrapper .ant-input {
+  height: 100%;
+  line-height: 48px;
+  padding: 0 12px; /* điều chỉnh padding nếu cần */
+}
+
+/* Căn giữa prefix/suffix icons */
+.login-card .ant-input-affix-wrapper .ant-input-prefix,
+.login-card .ant-input-affix-wrapper .ant-input-suffix {
+  display: flex;
+  align-items: center;
+}
+
+/* Đảm bảo .hero-col là position relative để đặt overlay */
+.hero-col {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Lớp overlay đen mờ che nền ảnh */
+.hero-col::before {
+  content: "";
+  position: absolute;
+  inset: 0;                  /* top:0; right:0; bottom:0; left:0; */
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
+
+/* Đưa nội dung hero lên trên overlay */
+.hero-inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* Bắt buộc text trắng và thêm shadow cho dễ đọc */
+.hero-title,
+.hero-desc {
+  color: #fff !important;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+/* Nếu cần, highlight cũng sửa lại cho nổi bật */
+.hero-desc .highlight {
+  color: #ff7875;
+  font-weight: 600;
+}

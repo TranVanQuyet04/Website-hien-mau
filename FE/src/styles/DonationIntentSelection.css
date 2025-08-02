@@ -1,0 +1,92 @@
+/* Container tổng */
+.intent-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 24px;
+  background-color: #fff;
+  border-radius: 12px;
+  font-family: "Segoe UI", sans-serif;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* Tiêu đề chính */
+.intent-title {
+  text-align: center;
+  color: #771813;
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+/* Box mỗi lựa chọn */
+.intent-option {
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  background-color: #f9f9f9;
+}
+
+.intent-option:hover {
+  background-color: #fdf0f0;
+}
+
+/* Khi được chọn */
+.intent-option.selected {
+  border-color: #dd2d24;
+  background-color: #fff3f3;
+  box-shadow: 0 0 0 2px rgba(221, 45, 36, 0.2);
+}
+
+/* Tiêu đề của mỗi lựa chọn */
+.option-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+/* Danh sách mô tả */
+.option-details {
+  margin-left: 26px;
+  color: #555;
+  font-size: 14px;
+  list-style-type: disc;
+}
+
+/* Điều khoản */
+.terms-box {
+  background-color: #fffbe6;
+  border-left: 4px solid #fdd835;
+  padding: 16px;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #333;
+  border-radius: 6px;
+}
+
+/* Nút tiếp tục */
+.btn-continue {
+  margin-top: 24px;
+  padding: 12px 24px;
+  width: 100%;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  background-color: #dd2d24;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-continue:hover {
+  background-color: #bb1d1a;
+}
+
+.btn-continue:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}

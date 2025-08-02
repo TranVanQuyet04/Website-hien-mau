@@ -1,0 +1,108 @@
+/* === user.css === */
+
+/* Layout chính */
+.user-layout {
+  min-height: 100vh;
+  display: flex;
+  background: linear-gradient(135deg, #a60000, #cc2a1f);
+  color: #fff;
+}
+
+/* Sidebar (Sider hoặc Drawer) */
+.user-sider {
+  background: linear-gradient(135deg, #a60000, #cc2a1f);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem 0.5rem;
+}
+
+/* Sidebar header: Avatar + thông tin */
+.sidebar-header {
+  text-align: center;
+  padding: 1rem;
+}
+
+.sidebar-title {
+  color: #fff !important;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+/* Menu */
+.ant-menu-light,
+.ant-menu-light .ant-menu-item,
+.ant-menu-light .ant-menu-submenu-title {
+  background: transparent;
+  color: #fff;
+}
+
+.ant-menu-item-selected {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  font-weight: bold;
+}
+
+.ant-menu-item:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Đăng xuất */
+.sidebar-btn {
+  margin: 1rem;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+.sidebar-btn:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: #fff;
+  color: #fff;
+}
+
+/* Header */
+.user-header {
+  background: transparent;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.page-title {
+  color: #fff !important;
+  margin: 0;
+}
+
+/* Nội dung chính */
+.main-content-user {
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  min-height: 100%;
+}
+
+/* Spinner */
+.loading-spinner {
+  text-align: center;
+  padding: 5rem;
+  color: #fff;
+}
+
+/* Responsive fix nếu cần */
+@media (max-width: 768px) {
+  .sidebar-btn {
+    font-size: 14px;
+    padding: 0.5rem;
+  }
+
+  .sidebar-title {
+    font-size: 16px;
+  }
+
+  .main-content-user {
+    padding: 1rem;
+  }
+}

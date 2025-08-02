@@ -1,0 +1,154 @@
+/* === Navbar wrapper === */
+.navbar {
+  background-color: #d32f2f !important;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  height: 64px;
+}
+
+/* ✅ Xoá vệt trắng dưới Header Ant Design */
+.ant-layout-header::after {
+  content: none !important;
+  border: none !important;
+  background: transparent !important;
+  height: 0 !important;
+}
+
+/* === Logo === */
+.navbar-logo img {
+  height: 40px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* === Center navigation === */
+.navbar-center-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar-center {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+/* === Nav item wrapper === */
+.nav-pill-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+/* === NavLink style (clean, no underline, no background) === */
+.nav-pill-custom {
+  font-size: 16px;
+  color: white;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 6px 8px;
+  transition: color 0.25s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent;
+  border-radius: 6px;
+}
+
+/* ❌ Loại bỏ hiệu ứng gạch trắng */
+.nav-pill-custom::after {
+  display: none;
+}
+
+/* ✅ Hover & Active không có nền, không gạch */
+.nav-pill-custom:hover,
+.nav-pill-custom:focus,
+.nav-pill-custom:active,
+.nav-pill-custom.active {
+  color: white;
+  background-color: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* === Icon buttons (search, bell...) === */
+.nav-icon {
+  color: white;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s ease;
+  background-color: transparent;
+}
+
+.nav-icon:hover {
+  color: #fff8e1;
+}
+
+/* === Notification avatar & dot === */
+.notification-avatar-wrapper {
+  position: relative;
+}
+
+.notification-icon {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+.notification-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #1890ff;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 8px;
+}
+
+/* === Notification list === */
+.notification-header,
+.notification-footer {
+  padding: 12px 20px;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notification-item.unread {
+  background-color: #f6ffed;
+  border-left: 3px solid #52c41a;
+}
+
+.notification-item:hover {
+  background-color: #fafafa !important;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .navbar-center {
+    display: none;
+  }
+
+  .user-dropdown span {
+    display: none;
+  }
+}

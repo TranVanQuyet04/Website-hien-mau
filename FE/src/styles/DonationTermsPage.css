@@ -1,0 +1,68 @@
+.terms-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 24px;
+  font-family: "Segoe UI", sans-serif;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.terms-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #771813;
+  margin-bottom: 16px;
+}
+
+.terms-description {
+  font-size: 15px;
+  color: #333;
+  white-space: pre-line;
+  margin-bottom: 24px;
+}
+
+.terms-box {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.terms-box-title {
+  font-weight: bold;
+  margin-bottom: 12px;
+  color: #444;
+}
+
+.terms-list {
+  padding-left: 20px;
+  font-size: 14px;
+  color: #555;
+  list-style-type: disc;
+}
+
+.btn-terms-confirm {
+  margin-top: 24px;
+  width: 100%;
+  padding: 12px 24px;
+  background-color: #dd2d24;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-terms-confirm:hover {
+  background-color: #b91c1c;
+}
+
+.error-message {
+  padding: 20px;
+  text-align: center;
+  color: red;
+  font-weight: bold;
+}

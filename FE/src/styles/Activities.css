@@ -1,0 +1,52 @@
+.activities-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.activities-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #771813;
+  margin-bottom: 40px;
+}
+
+.activity-card-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+}
+
+.activity-card {
+  background-color: #fff9f9;
+  padding: 24px;
+  border-radius: 18px;
+  box-shadow: 0 6px 16px rgba(221, 45, 36, 0.08);
+  width: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.activity-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(221, 45, 36, 0.2);
+}
+
+.activity-card h4 {
+  color: #771813;
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
+
+.activity-card p {
+  color: #444;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+.activity-date {
+  font-size: 0.9rem;
+  color: #888;
+}

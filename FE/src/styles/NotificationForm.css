@@ -1,0 +1,64 @@
+.notification-form-wrapper {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 16px;
+  background: #fffafa;
+  box-shadow: 0 8px 24px rgba(221, 45, 36, 0.15);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.notification-form-wrapper h2 {
+  text-align: center;
+  color: #771813;
+  margin-bottom: 24px;
+}
+
+.notification-form .form-group {
+  margin-bottom: 20px;
+}
+
+.notification-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #771813;
+}
+
+.notification-form input,
+.notification-form textarea {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+}
+
+.notification-form textarea {
+  resize: vertical;
+  height: 120px;
+}
+
+.notification-form button {
+  background: linear-gradient(to right, #771813, #dd2d24);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.3s;
+}
+
+.notification-form button:hover {
+  background: linear-gradient(to right, #5e0f0f, #c4221d);
+}
+
+.status {
+  margin-top: 15px;
+  color: #2e7d32;
+  text-align: center;
+  font-weight: 500;
+}
