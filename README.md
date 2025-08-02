@@ -69,11 +69,24 @@ Hệ thống quản lý hiến và truyền máu, hỗ trợ các vai trò: Admi
 
 ## 🚧 Ghi chú kỹ thuật
 
-- Backend: Spring Boot + Spring Security + JPA + MySQL.
-- Frontend: React.js + Html/Css
-- JWT Authentication.
-- Phân quyền rõ ràng theo Role: ADMIN, STAFF, DOCTOR, MEMBER.
-
+ Backend:
+ - Framework: Spring Boot
+ - Bảo mật: Spring Security + JWT Authentication
+ - ORM: JPA (Java Persistence API)
+ - Cơ sở dữ liệu: MySQL
+   
+ Frontend:
+ - Thư viện chính: React.js
+ - Ngôn ngữ: HTML / CSS / JavaScript
+   
+Xác thực & Phân quyền:
+ - Phương thức xác thực: JWT (JSON Web Token)
+ - Phân quyền theo vai trò (Role-based Access Control):
+ - ADMIN: Toàn quyền hệ thống
+ - STAFF: Nhân viên xử lý yêu cầu
+ - DOCTOR: Bác sĩ tiếp nhận / đánh giá chuyên môn
+ - MEMBER: Người dùng hệ thống (bệnh nhân, người hiến máu, staff, admin)
+   
 ## 🛡 Logic bảo mật
 
 - Chỉ admin được tạo tài khoản staff/doctor.
