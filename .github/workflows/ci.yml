@@ -18,10 +18,13 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
+        working-directory: FE
         run: npm install
 
       - name: Run tests (allow no tests)
+        working-directory: FE
         run: npm run test -- --passWithNoTests
 
       - name: Build project
+        working-directory: FE
         run: npm run build
