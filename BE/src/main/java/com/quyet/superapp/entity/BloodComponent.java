@@ -33,14 +33,15 @@ public class BloodComponent {
     @Column(name = "StorageDays")
     private Integer storageDays;
 
-    @Column(name = "Usage", columnDefinition = "NVARCHAR(200)")
+    // MySQL treats USAGE as a reserved keyword; force quoting for DDL.
+    @Column(name = "`Usage`", columnDefinition = "NVARCHAR(200)")
     private String usage;
 
     @Column(name = "ApheresisCompatible")
     private Boolean isApheresisCompatible;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "Type", columnDefinition = "VARCHAR(30)")
+    @Column(name = "`Type`", columnDefinition = "VARCHAR(30)")
     private BloodComponentType type;
 
     /**
