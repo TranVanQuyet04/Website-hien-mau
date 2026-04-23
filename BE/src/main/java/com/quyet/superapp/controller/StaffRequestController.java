@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/staff/requests")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:5173")
 public class StaffRequestController {
 
     private final BloodRequestService service;

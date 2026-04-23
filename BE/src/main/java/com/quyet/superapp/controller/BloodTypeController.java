@@ -14,7 +14,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/blood-types")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:5173")
 public class BloodTypeController {
 
     private final BloodTypeService bloodTypeService;

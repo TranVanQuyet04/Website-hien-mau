@@ -79,7 +79,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/blood-components")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:5173")
 @Validated
 public class BloodComponentController {
 

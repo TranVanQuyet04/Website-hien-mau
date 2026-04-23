@@ -14,7 +14,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/transfusions")
-@CrossOrigin("http://localhost:5173")
 @RequiredArgsConstructor
 public class TransfusionController {
 

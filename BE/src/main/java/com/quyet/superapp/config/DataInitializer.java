@@ -41,11 +41,6 @@ public class DataInitializer implements ApplicationRunner {
     }
 
     private void initOccupations() {
-        if (occupationRepo.count() > 0) {
-            log.info("📄 Danh sách nghề nghiệp đã tồn tại, bỏ qua khởi tạo.");
-            return;
-        }
-
         List<String> occupations = List.of(
                 "Bác sĩ", "Bảo vệ", "Bộ đội", "Buôn bán", "Ca sỹ", "Cán bộ", "Cán bộ nhân viên",
                 "Cảnh sát", "Chiến sĩ", "Chuyên viên", "Công an", "Công nhân", "Công nhân viên chức",
@@ -60,13 +55,19 @@ public class DataInitializer implements ApplicationRunner {
                 "Y tá"
         );
 
+        int inserted = 0;
+        int skipped = 0;
+
         for (String name : occupations) {
-            Occupation o = new Occupation();
-            o.setName(name);
-            occupationRepo.save(o);
+            if (occupationRepo.existsByName(name)) {
+                skipped++;
+                continue;
+            }
+            occupationRepo.save(new Occupation(null, name));
+            inserted++;
         }
 
-        log.info("📄 Đã khởi tạo {} nghề nghiệp mặc định.", occupations.size());
+        log.info("📄 Nghề nghiệp: thêm {}, bỏ qua {} (đã tồn tại).", inserted, skipped);
     }
 
 
