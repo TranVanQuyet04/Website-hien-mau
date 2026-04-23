@@ -38,6 +38,7 @@ import {
 } from '@ant-design/icons';
 import dayjs from 'dayjs';
 import axios from 'axios';
+import { apiUrl } from "../config/api";
 const { RangePicker } = DatePicker;
 const { Title, Text } = Typography;
 const { Option } = Select;
@@ -47,7 +48,7 @@ const donationService = {
   // Get donation history by user ID
   async getHistoryByUserId(userId) {
     try {
-      const response = await fetch(`/api/donations/history?userId=${userId}`, {
+      const response = await fetch(apiUrl(`api/donations/history?userId=${userId}`), {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
           'Content-Type': 'application/json',
@@ -69,7 +70,7 @@ const donationService = {
   // Get all donations for staff overview
   async getAllDonations() {
     try {
-      const response = await fetch('/api/donations', {
+      const response = await fetch(apiUrl("api/donations"), {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
           'Content-Type': 'application/json',
@@ -91,7 +92,7 @@ const donationService = {
   // Get donations by user ID
   async getDonationsByUserId(userId) {
     try {
-      const response = await fetch(`/api/donations/by-user?userId=${userId}`, {
+      const response = await fetch(apiUrl(`api/donations/by-user?userId=${userId}`), {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
           'Content-Type': 'application/json',

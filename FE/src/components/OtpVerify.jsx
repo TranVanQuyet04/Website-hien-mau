@@ -15,6 +15,7 @@ import {
   ClockCircleOutlined,
   ArrowLeftOutlined
 } from "@ant-design/icons";
+import { apiUrl } from "../config/api";
 
 const { Title, Text } = Typography;
 
@@ -52,7 +53,7 @@ const OtpVerify = () => {
     setLoading(true);
     try {
       // Verify OTP with backend
-      const response = await fetch('/api/verify-otp', {
+      const response = await fetch(apiUrl("api/verify-otp"), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -94,7 +95,7 @@ const OtpVerify = () => {
 
     try {
       // Resend OTP
-      const response = await fetch('/api/resend-otp', {
+      const response = await fetch(apiUrl("api/resend-otp"), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

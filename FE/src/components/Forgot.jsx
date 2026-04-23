@@ -15,6 +15,7 @@ import {
   PhoneOutlined,
   ArrowLeftOutlined
 } from "@ant-design/icons";
+import { apiUrl } from "../config/api";
 
 const { Title, Text } = Typography;
 
@@ -28,7 +29,7 @@ const Forgot = () => {
     setLoading(true);
     try {
       // Simulate API call to verify CCCD and phone number
-      const response = await fetch('/api/verify-identity', {
+      const response = await fetch(apiUrl("api/verify-identity"), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
