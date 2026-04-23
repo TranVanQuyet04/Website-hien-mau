@@ -1,9 +1,15 @@
 package com.quyet.superapp.config;
 
 import com.quyet.superapp.entity.*;
+import com.quyet.superapp.entity.address.City;
+import com.quyet.superapp.entity.address.District;
+import com.quyet.superapp.entity.address.Ward;
 import com.quyet.superapp.enums.BloodComponentType;
 import com.quyet.superapp.enums.RoleEnum;
 import com.quyet.superapp.repository.*;
+import com.quyet.superapp.repository.address.CityRepository;
+import com.quyet.superapp.repository.address.DistrictRepository;
+import com.quyet.superapp.repository.address.WardRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,6 +32,9 @@ public class DataInitializer implements ApplicationRunner {
     private final RoleRepository roleRepo;
     private final PasswordEncoder passwordEncoder;
     private final OccupationRepository occupationRepo;
+    private final CityRepository cityRepo;
+    private final DistrictRepository districtRepo;
+    private final WardRepository wardRepo;
 
 
 
@@ -37,7 +46,81 @@ public class DataInitializer implements ApplicationRunner {
         initBloodComponents();
         initBloodPrices();
         initOccupations();
+        initAddresses();
         initAdminUser();
+    }
+
+    private void initAddresses() {
+        // Seed tối thiểu để UI có dữ liệu chọn quận/phường ngay trên môi trường production.
+        // Idempotent: chạy lại không tạo bản ghi trùng.
+        City hcm = cityRepo.findByNameCity("TP Hồ Chí Minh")
+                .orElseGet(() -> cityRepo.save(new City(null, "TP Hồ Chí Minh")));
+
+        record DistrictSeed(String districtName, int wardCount) {}
+        List<DistrictSeed> districts = List.of(
+                new DistrictSeed("Quận 1", 10),
+                new DistrictSeed("Quận 3", 10),
+                new DistrictSeed("Quận 4", 10),
+                new DistrictSeed("Quận 5", 10),
+                new DistrictSeed("Quận 6", 10),
+                new DistrictSeed("Quận 7", 10),
+                new DistrictSeed("Quận 8", 10),
+                new DistrictSeed("Quận 10", 10),
+                new DistrictSeed("Quận 11", 10),
+                new DistrictSeed("Quận 12", 10),
+                new DistrictSeed("Quận Bình Thạnh", 15),
+                new DistrictSeed("Quận Gò Vấp", 15),
+                new DistrictSeed("Quận Phú Nhuận", 10),
+                new DistrictSeed("Quận Tân Bình", 15),
+                new DistrictSeed("Quận Tân Phú", 15),
+                new DistrictSeed("TP Thủ Đức", 20),
+                new DistrictSeed("Quận Bình Tân", 15),
+                new DistrictSeed("Huyện Bình Chánh", 10),
+                new DistrictSeed("Huyện Củ Chi", 10),
+                new DistrictSeed("Huyện Hóc Môn", 10),
+                new DistrictSeed("Huyện Nhà Bè", 10),
+                new DistrictSeed("Huyện Cần Giờ", 7)
+        );
+
+        int insertedDistricts = 0;
+        int insertedWards = 0;
+
+        for (DistrictSeed seed : districts) {
+            if (!districtRepo.existsByDistrictNameIgnoreCaseAndCity_CityId(seed.districtName(), hcm.getCityId())) {
+                District d = new District();
+                d.setDistrictName(seed.districtName());
+                d.setCity(hcm);
+                districtRepo.save(d);
+                insertedDistricts++;
+            }
+        }
+
+        // Load lại districts để có districtId
+        List<District> persistedDistricts = districtRepo.findByCity_CityId(hcm.getCityId());
+        Map<String, District> districtByName = new HashMap<>();
+        for (District d : persistedDistricts) {
+            districtByName.put(d.getDistrictName().toLowerCase(Locale.ROOT), d);
+        }
+
+        for (DistrictSeed seed : districts) {
+            District d = districtByName.get(seed.districtName().toLowerCase(Locale.ROOT));
+            if (d == null) continue;
+
+            for (int i = 1; i <= seed.wardCount(); i++) {
+                String wardName = (seed.districtName().startsWith("Huyện") ? "Xã " : "Phường ") + i;
+                if (wardRepo.existsByWardNameIgnoreCaseAndDistrict_DistrictId(wardName, d.getDistrictId())) {
+                    continue;
+                }
+                Ward w = new Ward();
+                w.setWardName(wardName);
+                w.setDistrict(d);
+                wardRepo.save(w);
+                insertedWards++;
+            }
+        }
+
+        log.info("📍 Địa chỉ: TP.HCM (cityId={}) - thêm {} quận/huyện, {} phường/xã.",
+                hcm.getCityId(), insertedDistricts, insertedWards);
     }
 
     private void initOccupations() {
