@@ -1,16 +1,12 @@
 package com.quyet.superapp.service;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
 import java.time.Duration;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-@Service
-@ConditionalOnMissingBean(OtpService.class)
 @Slf4j
 public class InMemoryOtpService implements OtpService {
 
