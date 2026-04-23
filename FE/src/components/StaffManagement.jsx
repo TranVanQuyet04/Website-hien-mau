@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from 'axios';
 import { useEffect } from 'react';
+import { apiUrl } from "../config/api";
 
 import { 
   Form, 
@@ -67,7 +68,7 @@ useEffect(() => {
   const fetchStaffs = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.get("http://localhost:8080/api/admin/staffs", {
+      const response = await axios.get(apiUrl("api/admin/staffs"), {
         headers: {
           Authorization: `Bearer ${token}`,
         },

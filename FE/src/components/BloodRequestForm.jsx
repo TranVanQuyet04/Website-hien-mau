@@ -35,6 +35,7 @@ import {
 import dayjs from "dayjs";
 import axios from 'axios';
 import AuthService from '../services/auth.service';
+import { apiUrl } from "../config/api";
 
 const { Header, Content } = Layout;
 const { Option } = Select;
@@ -195,7 +196,7 @@ useEffect(() => {
       };
 
       const response = await axios.post(
-        "http://localhost:8080/api/blood-requests",
+        apiUrl("api/blood-requests"),
         payload,
         {
           headers: {

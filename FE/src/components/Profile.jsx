@@ -31,6 +31,7 @@ import {
   EditOutlined
 } from "@ant-design/icons";
 import dayjs from 'dayjs';
+import { apiUrl } from "../config/api";
 
 const { Title, Text } = Typography;
 const { Option } = Select;
@@ -47,7 +48,7 @@ const Profile = () => {
 const fetchUserProfile = async () => {
   try {
     setDataLoading(true);
-    const res = await axios.get("http://localhost:8080/api/userprofiles/me", {
+    const res = await axios.get(apiUrl("api/userprofiles/me"), {
             headers: getAuthHeader(),
           });
     const profile = res.data;
@@ -76,7 +77,9 @@ const fetchUserProfile = async () => {
 
 const fetchDonationHistory = async () => {
   try {
-    const res = await axios.get("http://localhost:8080/api/donations/history");
+    const res = await axios.get(apiUrl("api/donations/history"), {
+      headers: getAuthHeader(),
+    });
     setHistory(res.data);
   } catch (error) {
     console.error("Error fetching history:", error);
@@ -103,7 +106,9 @@ const handleSubmit = async (values) => {
       recoveryTime: values.recoveryTime
     };
 
-    const res = await axios.put("http://localhost:8080/api/userprofiles/me", payload);
+    const res = await axios.put(apiUrl("api/userprofiles/me"), payload, {
+      headers: getAuthHeader(),
+    });
     setUserProfile(res.data);
     message.success("Cập nhật hồ sơ thành công");
     setIsEditing(false);

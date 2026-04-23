@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Table, Button, message, Tooltip, Tag } from "antd";
 import { CheckOutlined, CloseOutlined, InfoCircleOutlined } from "@ant-design/icons";
 import axios from "axios";
+import { apiUrl } from "../config/api";
 
 const UrgentRequests = () => {
   const [donors, setDonors] = useState([]);
@@ -12,7 +13,7 @@ const UrgentRequests = () => {
   const fetchDonors = async () => {
     setLoading(true);
     try {
-      const res = await axios.get("http://localhost:8080/api/staff/verify-donors");
+      const res = await axios.get(apiUrl("api/staff/verify-donors"));
       setDonors(res.data);
     } catch (error) {
       message.error("Lỗi tải danh sách người hiến máu");
@@ -28,7 +29,7 @@ const UrgentRequests = () => {
   // Xác minh người hiến
   const verifyDonor = async (donorId) => {
     try {
-      await axios.put(`http://localhost:8080/api/staff/verify-donors/${donorId}/verify`);
+      await axios.put(apiUrl(`api/staff/verify-donors/${donorId}/verify`));
       message.success("Xác minh thành công");
       fetchDonors();
     } catch (error) {
@@ -40,7 +41,7 @@ const UrgentRequests = () => {
   // Từ chối người hiến
   const rejectDonor = async (donorId) => {
     try {
-      await axios.delete(`http://localhost:8080/api/staff/verify-donors/${donorId}/reject`);
+      await axios.delete(apiUrl(`api/staff/verify-donors/${donorId}/reject`));
       message.success("Từ chối thành công");
       fetchDonors();
     } catch (error) {

@@ -1,10 +1,11 @@
 import axios from 'axios';
+import { apiUrl } from "../config/api";
 
 // ✅ Gửi cookie nếu backend yêu cầu (ví dụ: Spring Security dùng JSESSIONID)
 axios.defaults.withCredentials = true;
 
 // ✅ Base URL cho mọi request
-const API_URL = '/api/';
+const API_URL = apiUrl("api/");
 
 // ✅ Tạo Authorization Header từ JWT
 export const getAuthHeader = () => {
@@ -91,7 +92,7 @@ const getNotifications = () => {
   });
 };
 const getInventory = () => {
-  return axios.get(`/api/blood-inventory`, {
+  return axios.get(apiUrl("api/blood-inventory"), {
     headers: {
       ...getAuthHeader(),
       "Cache-Control": "no-cache"

@@ -12,6 +12,7 @@ import {
 import axios from "axios";
 import AuthService from "../services/auth.service";
 import { HeartOutlined } from "@ant-design/icons";
+import { apiUrl } from "../config/api";
 
 const { Option } = Select;
 const { Title, Text } = Typography;
@@ -55,7 +56,7 @@ const UrgentDonationRegister = () => {
         readinessLevel: values.readinessLevel,
       };
 
-      await axios.post("http://localhost:8080/api/urgent-donors/register", payload, {
+      await axios.post(apiUrl("api/urgent-donors/register"), payload, {
         headers: { Authorization: `Bearer ${accessToken}` },
       });
 

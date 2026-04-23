@@ -1,8 +1,9 @@
 import axios from 'axios';
+import { apiUrl } from "../config/api";
 
 axios.defaults.withCredentials = true;
 
-const API_URL = 'http://localhost:8080/api/auth';
+const API_URL = apiUrl("api/auth");
 
 // ✅ Đăng nhập
 const login = async (username, password) => {
@@ -42,7 +43,7 @@ const logout = async () => {
   try {
     const token = localStorage.getItem('token');
     if (token) {
-      await axios.post("http://localhost:8080/api/auth/logout", null, {
+      await axios.post(`${API_URL}/logout`, null, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -80,7 +81,7 @@ const getAuthHeader = () => {
 
 // ✅ API mẫu có auth
 const getInventory = () => {
-  return axios.get("http://localhost:8080/api/blood/inventory", {
+  return axios.get(apiUrl("api/blood/inventory"), {
     headers: getAuthHeader()
   });
 };

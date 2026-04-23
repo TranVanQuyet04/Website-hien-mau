@@ -38,6 +38,7 @@ import dayjs from 'dayjs';
 import axios from 'axios';
 import VnPayPaymentFormContent from "./VnPayPayment";
 import BloodUnitSelector from './BloodUnitSelector';
+import { apiUrl } from "../config/api";
 
 
 const { Header, Content } = Layout;
@@ -107,7 +108,7 @@ const fetchBloodRequests = async () => {
   try {
     setLoading(true);
     const token = localStorage.getItem("token");
-    const res = await axios.get("http://localhost:8080/api/blood-requests/approved", {
+    const res = await axios.get(apiUrl("api/blood-requests/approved"), {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -244,7 +245,7 @@ const approveBloodRequest = async (data) => {
   try {
     const token = localStorage.getItem("token");
     const res = await axios.put(
-      "http://localhost:8080/api/blood-requests/approve",
+      apiUrl("api/blood-requests/approve"),
       data,
       {
         headers: {

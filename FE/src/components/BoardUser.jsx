@@ -3,6 +3,7 @@ import { Card, Descriptions, Typography, Alert, Spin } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { getAuthHeader } from "../services/user.service";
 import axios from "axios";
+import { apiUrl } from "../config/api";
 
 const { Title } = Typography;
 
@@ -13,7 +14,7 @@ const BoardUser = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await axios.get("http://localhost:8080/api/userprofiles/me", {
+        const res = await axios.get(apiUrl("api/userprofiles/me"), {
           headers: getAuthHeader(),
         });
         setUserDetail(res.data);

@@ -41,6 +41,7 @@ import {
   ClockCircleOutlined,
   TrophyOutlined,
 } from '@ant-design/icons';
+import { apiUrl } from "../config/api";
 
 const { Header, Content } = Layout;
 const { Title, Text } = Typography;
@@ -73,7 +74,7 @@ const [donorTypeData, setDonorTypeData] = useState([]);
 useEffect(() => {
   const fetchUserProfiles = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api/userprofiles', {
+      const response = await axios.get(apiUrl("api/userprofiles"), {
   headers: {
     Authorization: `Bearer ${token}`, // ✅ Thay token bằng giá trị thực
   }
@@ -91,7 +92,7 @@ useEffect(() => {
   const fetchEmergencyDonors = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:8080/api/admin/urgent-donors/list', {
+      const response = await axios.get(apiUrl("api/admin/urgent-donors/list"), {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -109,7 +110,7 @@ useEffect(() => {
   const fetchRegularDonations = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:8080/api/donation', {
+      const response = await axios.get(apiUrl("api/donation"), {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -127,7 +128,7 @@ useEffect(() => {
   const fetchSuccessfulDonations = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:8080/api/blood-requests/admin/requests/completed', {
+      const response = await axios.get(apiUrl("api/blood-requests/admin/requests/completed"), {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -145,7 +146,7 @@ useEffect(() => {
   const fetchBloodBags = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:8080/api/blood-units', {
+      const response = await axios.get(apiUrl("api/blood-units"), {
         headers: {
           Authorization: `Bearer ${token}`,
         },

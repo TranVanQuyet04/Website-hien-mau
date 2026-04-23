@@ -15,6 +15,7 @@ import { HistoryOutlined,CalendarOutlined,UserOutlined } from "@ant-design/icons
 import axios from "axios";
 import dayjs from "dayjs";
 import * as XLSX from "xlsx";
+import { apiUrl } from "../config/api";
 
 const { Title,Text } = Typography;
 const { Header, Content } = Layout;
@@ -28,7 +29,7 @@ const donatedHistory = history.filter((item) => item.status === "DONATED");
   useEffect(() => {
   const token = localStorage.getItem("token"); // hoặc nơi bạn lưu token
   axios
-    .get(`http://localhost:8080/api/donation`, {
+    .get(apiUrl("api/donation"), {
       headers: {
         Authorization: `Bearer ${token}`,
       },

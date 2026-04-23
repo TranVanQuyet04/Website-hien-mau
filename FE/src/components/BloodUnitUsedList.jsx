@@ -30,6 +30,7 @@ import {
   FireOutlined
 } from '@ant-design/icons';
 import axios from 'axios';
+import { apiUrl } from "../config/api";
 
 const { Header, Content } = Layout;
 const { Title, Text } = Typography;
@@ -57,7 +58,7 @@ const BloodUnitUsedList = () => {
   const fetchBloodBagById = async (bloodId) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`http://localhost:8080/api/blood-bags/${bloodId}`, {
+      const response = await axios.get(apiUrl(`api/blood-bags/${bloodId}`), {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -73,7 +74,7 @@ const BloodUnitUsedList = () => {
     const fetchUnits = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get(`http://localhost:8080/api/blood-units`, {
+        const res = await axios.get(apiUrl("api/blood-units"), {
           headers: { Authorization: `Bearer ${token}` },
         });
 

@@ -17,6 +17,7 @@ import {
 } from "@ant-design/icons";
 import { FaUser, FaEnvelope, FaAddressCard, FaLock } from "react-icons/fa";
 import RegisterProgress from "../components/RegisterProgress";
+import { apiUrl } from "../config/api";
 
 const { Title, Text } = Typography;
 
@@ -66,7 +67,7 @@ const handleSubmit = async () => {
 };
 
     const response = await axios.post(
-      "http://localhost:8080/api/auth/register",
+      apiUrl("api/auth/register"),
       finalFormData,
       {
         headers: {

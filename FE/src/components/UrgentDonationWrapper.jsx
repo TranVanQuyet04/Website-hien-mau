@@ -18,6 +18,7 @@ import { useNavigate } from "react-router-dom";
 import AuthService from "../services/auth.service";
 import benefits from "../data/benefits.json";
 import axios from "axios";
+import { apiUrl } from "../config/api";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -38,7 +39,7 @@ const [isUndecided, setIsUndecided] = useState(false);
   const handleLeaveGroup = async () => {
     try {
       await axios.post(
-        "http://localhost:8080/api/urgent-donors/leave",
+        apiUrl("api/urgent-donors/leave"),
         {},
         { headers: { Authorization: `Bearer ${user?.accessToken}` } }
       );
@@ -52,7 +53,7 @@ const [isUndecided, setIsUndecided] = useState(false);
 const fetchCurrentStatus = async () => {
   try {
     const res = await axios.get(
-      `http://localhost:8080/api/urgent-donors/current-status`,
+      apiUrl("api/urgent-donors/current-status"),
       { headers: { Authorization: `Bearer ${user?.accessToken}` } }
     );
     const { mode, status } = res.data;
@@ -88,7 +89,7 @@ const readinessLabels = {
     try {
       setChanging(true);
       await axios.post(
-        "http://localhost:8080/api/urgent-donors/confirm-change-mode",
+        apiUrl("api/urgent-donors/confirm-change-mode"),
         { readinessLevel: newLevel },
         { headers: { Authorization: `Bearer ${user?.accessToken}` } }
       );

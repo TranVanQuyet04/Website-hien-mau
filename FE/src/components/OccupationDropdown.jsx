@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Select, message } from "antd";
+import { apiUrl } from "../config/api";
 
 const { Option } = Select;
 
@@ -11,7 +12,7 @@ const OccupationDropdown = ({ value, onChange }) => {
     const fetchOccupations = async () => {
       try {
         setLoading(true);
-        const response = await fetch("http://localhost:8080/api/occupations");
+        const response = await fetch(apiUrl("api/occupations"));
  // <-- Đổi URL nếu cần
         if (!response.ok) {
           throw new Error("Network response was not ok");

@@ -43,6 +43,7 @@ import dayjs from "dayjs";
 import * as XLSX from "xlsx";
 import { useParams } from "react-router-dom";
 import AuthService from "../services/auth.service";
+import { apiUrl } from "../config/api";
 
 const { Title, Text, Paragraph } = Typography;
 const { Header, Content } = Layout;
@@ -73,7 +74,7 @@ const MemberDonationHistory = () => {
 
       try {
         setLoading(true);
-        const res = await axios.get(`http://localhost:8080/api/donation/history/${userId}`, {
+        const res = await axios.get(apiUrl(`api/donation/history/${userId}`), {
           headers: {
             Authorization: `Bearer ${token}`,
           },

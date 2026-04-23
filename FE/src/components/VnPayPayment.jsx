@@ -17,6 +17,7 @@ import dayjs from "dayjs";
 import axios from "axios";
 import AuthService from "../services/auth.service";
 import { CreditCardOutlined } from "@ant-design/icons";
+import { apiUrl } from "../config/api";
 
 const { Title } = Typography;
 const { Option } = Select;
@@ -66,7 +67,7 @@ const VnPayPayment = ({ request, selectedUnits = [] }) => {
     const token = localStorage.getItem("token");
     for (const unit of selectedUnits) {
       try {
-        await axios.put(`http://localhost:8080/api/blood-units/${unit.bloodUnitId}/mark-used`, {}, {
+        await axios.put(apiUrl(`api/blood-units/${unit.bloodUnitId}/mark-used`), {}, {
           headers: { Authorization: `Bearer ${token}` },
         });
         console.log(`✅ Marked unit ${unit.bloodUnitId} as USED`);
@@ -96,7 +97,7 @@ const handleSubmit = async (values) => {
     };
 
     // ✅ 1. Gửi thông tin thanh toán
-    await axios.post("http://localhost:8080/api/vnpay/create", payload, {
+    await axios.post(apiUrl("api/vnpay/create"), payload, {
       headers: {
         Authorization: `Bearer ${user.accessToken}`,
       },
@@ -107,7 +108,7 @@ const handleSubmit = async (values) => {
 
     // ✅ 3. Cập nhật trạng thái yêu cầu máu sang COMPLETED
     await axios.put(
-      "http://localhost:8080/api/blood-requests/approve",
+      apiUrl("api/blood-requests/approve"),
       {
         bloodRequestId: request?.id,
         status: "COMPLETED",
