@@ -33,6 +33,7 @@ import {
   FireOutlined
 } from '@ant-design/icons';
 import axios from 'axios';
+import { apiUrl } from "../config/api";
 
 const { Header, Content } = Layout;
 const { Title, Text } = Typography;
@@ -67,14 +68,14 @@ const fetchUrgentDonors = async () => {
     setLoading(true);
 
     // B1: Gọi danh sách người hiến
-    const res = await axios.get("http://localhost:8080/api/admin/urgent-donors/list");
+    const res = await axios.get(apiUrl("api/admin/urgent-donors/list"));
 
     const enriched = await Promise.all(
       res.data.map(async (donor) => {
         // B2: Lấy profile theo donorId
         let profile = {};
         try {
-          const profileRes = await axios.get(`http://localhost:8080/api/userprofiles/${donor.donorId}`);
+          const profileRes = await axios.get(apiUrl(`api/userprofiles/${donor.donorId}`));
           profile = profileRes.data;
         } catch (e) {
           console.warn(`⚠️ Không tìm thấy profile của donorId=${donor.donorId}`);
@@ -273,7 +274,7 @@ const fetchUrgentDonors = async () => {
         onClick={async () => {
           try {
             // Gọi API lấy chi tiết người hiến
-            const res = await axios.get(`http://localhost:8080/api/urgent-donors/detail/${record.donorId}`);
+            const res = await axios.get(apiUrl(`api/urgent-donors/detail/${record.donorId}`));
             // Set dữ liệu chi tiết trả về
             setSelected(res.data);
             setIsModalOpen(true);

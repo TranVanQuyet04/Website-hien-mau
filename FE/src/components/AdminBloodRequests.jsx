@@ -36,6 +36,7 @@ import {
 import dayjs from 'dayjs';
 import axios from 'axios';
 import BloodUnitSelector from './BloodUnitSelector';
+import { apiUrl } from "../config/api";
 const { Header, Content } = Layout;
 const { Title, Text } = Typography;
 const { Option } = Select;
@@ -103,7 +104,7 @@ const handleSelectUnits = (units) => {
     try {
       setLoading(true);
       const token = localStorage.getItem("token");
-      const res = await axios.get("http://localhost:8080/api/blood-requests/admin", {
+      const res = await axios.get(apiUrl("api/blood-requests/admin"), {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -207,7 +208,7 @@ const closeUnitSelector = () => {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.put(
-        "http://localhost:8080/api/blood-requests/approve",
+        apiUrl("api/blood-requests/approve"),
         data,
         {
           headers: {

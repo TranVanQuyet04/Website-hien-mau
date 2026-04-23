@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Table, Button, message, Typography } from 'antd';
 import axios from 'axios';
+import { apiUrl } from "../config/api";
 
 const { Text } = Typography;
 
@@ -28,7 +29,7 @@ const BloodUnitSelector = ({ id, onSelect }) => {
     const fetchUnits = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get(`http://localhost:8080/api/blood-units/available/filter`, {
+        const res = await axios.get(apiUrl("api/blood-units/available/filter"), {
           params: { componentId },
           headers: { Authorization: `Bearer ${token}` },
         });

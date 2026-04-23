@@ -39,6 +39,7 @@ import axios from "axios";
 import AuthService from "../services/auth.service";
 import { getAuthHeader } from "../services/user.service";
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL, apiUrl } from "../config/api";
 
 const { Title, Text, Paragraph } = Typography;
 const { Header, Content } = Layout;
@@ -46,7 +47,7 @@ const { Step } = Steps;
 
 
 
-const API_BASE = "http://localhost:8080";
+const API_BASE = API_BASE_URL;
 
 const generateSlots = () => {
   const slots = [];
@@ -95,7 +96,7 @@ const isSlotPassed = (slotTime, selectedDate) => {
 const checkSlotFull = async (date, slotId) => {
   try {
     const res = await axios.get(
-      `${API_BASE}/api/donation/check-slot`,
+      apiUrl("api/donation/check-slot"),
       {
         params: {
           date: date.format("YYYY-MM-DD"),
@@ -129,7 +130,7 @@ const checkSlotFull = async (date, slotId) => {
 
     try {
       // 1. Gọi API lấy lịch sử hiến máu
-      const res = await axios.get(`${API_BASE}/api/donation/history/${currentUser.userId}`, {
+      const res = await axios.get(apiUrl(`api/donation/history/${currentUser.userId}`), {
         headers: getAuthHeader(),
       });
 
@@ -164,7 +165,7 @@ const checkSlotFull = async (date, slotId) => {
           if (!slotId) return;
 
           try {
-            const res = await axios.get(`${API_BASE}/api/donation/check-slot`, {
+            const res = await axios.get(apiUrl("api/donation/check-slot"), {
               params: {
                 date: selectedDate.format("YYYY-MM-DD"),
                 slot_id: slotId,
@@ -263,7 +264,7 @@ const checkSlotFull = async (date, slotId) => {
       };
 
       await axios.post(
-        `${API_BASE}/api/donation/register/${currentUser.userId}`,
+        apiUrl(`api/donation/register/${currentUser.userId}`),
         payload,
         { headers: getAuthHeader() }
       );

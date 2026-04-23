@@ -18,6 +18,7 @@ import {
   CalendarOutlined
 } from '@ant-design/icons';
 import axios from 'axios';
+import { apiUrl } from "../config/api";
 
 const { Header, Content } = Layout;
 const { Title, Text } = Typography;
@@ -54,7 +55,7 @@ const BloodUnitList = () => {
   const fetchBloodBagById = async (bloodId) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`http://localhost:8080/api/blood-bags/${bloodId}`, {
+      const response = await axios.get(apiUrl(`api/blood-bags/${bloodId}`), {
         headers: { Authorization: `Bearer ${token}` }
       });
       return response.data;
@@ -68,7 +69,7 @@ const BloodUnitList = () => {
     const fetchUnits = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get(`http://localhost:8080/api/blood-units`, {
+        const res = await axios.get(apiUrl("api/blood-units"), {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -111,7 +112,7 @@ const BloodUnitList = () => {
       onOk: async () => {
         try {
           const token = localStorage.getItem('token');
-          await axios.put(`http://localhost:8080/api/blood-units/${id}/mark-expired`, {}, {
+          await axios.put(apiUrl(`api/blood-units/${id}/mark-expired`), {}, {
             headers: { Authorization: `Bearer ${token}` }
           });
           message.success(`✅ Đã đánh dấu đơn vị ${id} là hết hạn.`);

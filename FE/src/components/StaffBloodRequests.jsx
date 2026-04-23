@@ -34,6 +34,7 @@ import {
 } from '@ant-design/icons';
 import dayjs from 'dayjs';
 import axios from 'axios';
+import { apiUrl } from "../config/api";
 const { Title, Text } = Typography;
 const { Option } = Select;
 const { RangePicker } = DatePicker;
@@ -71,7 +72,7 @@ const StaffBloodRequests = () => {
     try {
       setLoading(true);
       const token = localStorage.getItem("token");
-      const res = await axios.get("http://localhost:8080/api/blood-requests/admin", {
+      const res = await axios.get(apiUrl("api/blood-requests/admin"), {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -168,7 +169,7 @@ const StaffBloodRequests = () => {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.put(
-        "http://localhost:8080/api/blood-requests/approve",
+        apiUrl("api/blood-requests/approve"),
         data,
         {
           headers: {

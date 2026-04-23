@@ -43,12 +43,13 @@ import {
 import "../styles/staff.css";
 import { Descriptions } from 'antd';
 import dayjs from 'dayjs';
+import { API_BASE_URL, apiUrl } from "../config/api";
 
 const { Header, Content } = Layout;
 const { Title, Text } = Typography;
 const { Option } = Select;
 
-const API_BASE = "http://localhost:8080";
+const API_BASE = API_BASE_URL;
 
 const DonationConfirm = () => {
   const [donations, setDonations] = useState([]);
@@ -63,7 +64,7 @@ const DonationConfirm = () => {
   const loadDonations = () => {
     setLoading(true);
     axios
-      .get(`${API_BASE}/api/donation`, {
+      .get(apiUrl("api/donation"), {
         headers: getAuthHeader(),
       })
       .then((res) => {
@@ -181,19 +182,19 @@ const DonationConfirm = () => {
   };
 
   const handleStatusChange = (id, newStatus) => {
-    let apiUrl = "";
+    let requestUrl = "";
 
     if (newStatus === "Đang xử lý...") {
-      apiUrl = `${API_BASE}/api/donation/confirm?register_id=${id}`;
+      requestUrl = apiUrl(`api/donation/confirm?register_id=${id}`);
     } else if (newStatus === "Chưa nhập dữ liệu") {
-      apiUrl = `${API_BASE}/api/donation/mark-donated?register_id=${id}`;
+      requestUrl = apiUrl(`api/donation/mark-donated?register_id=${id}`);
     } else if (newStatus === "Đã hủy") {
-      apiUrl = `${API_BASE}/api/donation/cancel?register_id=${id}`;
+      requestUrl = apiUrl(`api/donation/cancel?register_id=${id}`);
     }
 
-    if (apiUrl) {
+    if (requestUrl) {
       axios
-        .put(apiUrl, null, {
+        .put(requestUrl, null, {
           headers: getAuthHeader(),
         })
         .then(() => {
@@ -214,7 +215,7 @@ const DonationConfirm = () => {
         ...values,
       };
 
-      axios.put(`${API_BASE}/api/blood-bags/${bloodBag.bloodBagId}`, payload, {
+      axios.put(apiUrl(`api/blood-bags/${bloodBag.bloodBagId}`), payload, {
         headers: getAuthHeader(),
       })
         .then(() => {
@@ -362,7 +363,7 @@ const DonationConfirm = () => {
       };
 
       axios
-        .post("http://localhost:8080/api/blood-bags", payload, {
+        .post(apiUrl("api/blood-bags"), payload, {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),
           },
@@ -488,7 +489,7 @@ const DonationConfirm = () => {
     setModalMode(mode);
 
     try {
-      const res = await axios.get(`${API_BASE}/api/blood-bags/by-registration`, {
+      const res = await axios.get(apiUrl("api/blood-bags/by-registration"), {
         params: { registrationId: item.registrationId },
         headers: getAuthHeader()
       });
@@ -555,7 +556,7 @@ const DonationConfirm = () => {
       };
 
       // ✅ 3. Kiểm tra lệnh tách đã tồn tại chưa
-      const checkRes = await axios.get(`${API_BASE}/api/separation-orders/exists`, {
+      const checkRes = await axios.get(apiUrl("api/separation-orders/exists"), {
         params: { bloodBagId },
         headers: getAuthHeader()
       });
@@ -564,7 +565,7 @@ const DonationConfirm = () => {
       console.log("🩸 Bag ID:", bloodBagId, "Đã tách chưa:", existed);
 
       if (existed) {
-        await axios.put(`${API_BASE}/api/separation-orders/update-suggestion?bloodBagId=${bloodBagId}`, payload, {
+        await axios.put(apiUrl(`api/separation-orders/update-suggestion?bloodBagId=${bloodBagId}`), payload, {
           headers: getAuthHeader()
         });
         notification.success({ message: "Cập nhật lệnh tách thành công" });
@@ -579,7 +580,7 @@ const DonationConfirm = () => {
           status: "AVAILABLE"
         };
 
-        await axios.post(`${API_BASE}/api/separation-orders/create-manual`, null, {
+        await axios.post(apiUrl("api/separation-orders/create-manual"), null, {
           params,
           headers: getAuthHeader()
         });
@@ -621,7 +622,7 @@ const DonationConfirm = () => {
     setHealthFormLoading(true);
     console.log("Gọi với ID:", regId);
     axios
-      .get(`${API_BASE}/api/health-check`, {
+      .get(apiUrl("api/health-check"), {
         headers: getAuthHeader(),
         params: { registrationId: regId }
       })
@@ -653,7 +654,7 @@ const DonationConfirm = () => {
     setHealthFormLoading(true);
 
     axios
-      .get(`${API_BASE}/api/health-check/get-or-create`, {
+      .get(apiUrl("api/health-check/get-or-create"), {
         headers: getAuthHeader(),
         params: { registrationId: regId }
       })
@@ -722,7 +723,7 @@ const DonationConfirm = () => {
           ...values                         // ghi đè các field người dùng đã nhập
         };
 
-        axios.put(`${API_BASE}/api/health-check/update`, payload, {
+        axios.put(apiUrl("api/health-check/update"), payload, {
           headers: getAuthHeader()
         })
           .then(() => {

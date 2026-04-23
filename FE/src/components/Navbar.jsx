@@ -35,6 +35,7 @@ import {
 } from "@ant-design/icons";
 import "../styles/Navbar.css";
 import AuthService from "../services/auth.service";
+import { apiUrl } from "../config/api";
 const { Header } = Layout;
 const { Text, Title } = Typography;
 
@@ -105,7 +106,7 @@ console.log("userId:", user?.userId);
 
       // 🔴 STAFF: lấy từ API blood-requests/admin
       if (user?.role === "STAFF" && user?.accessToken) {
-        const response = await fetch("http://localhost:8080/api/blood-requests/admin", {
+        const response = await fetch(apiUrl("api/blood-requests/admin"), {
           headers: {
             Authorization: `Bearer ${user.accessToken}`,
             "Content-Type": "application/json",
@@ -152,7 +153,7 @@ console.log("userId:", user?.userId);
 
       // 🔵 MEMBER: lấy từ API donation/history/${userId}
       if (user?.role === "MEMBER" && user?.accessToken) {
-         const response = await fetch(`http://localhost:8080/api/donation/history/${user.userId}`, {
+         const response = await fetch(apiUrl(`api/donation/history/${user.userId}`), {
     headers: {
       Authorization: `Bearer ${user.accessToken}`,
       "Content-Type": "application/json",

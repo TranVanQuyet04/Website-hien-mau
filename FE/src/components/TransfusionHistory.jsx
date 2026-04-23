@@ -33,6 +33,7 @@ import {
 } from '@ant-design/icons';
 import dayjs from 'dayjs';
 import axios from 'axios';
+import { apiUrl } from "../config/api";
 const { Header, Content } = Layout;
 const { Title, Text } = Typography;
 const { Option } = Select;
@@ -66,7 +67,7 @@ const fetchBloodRequests = async () => {
   try {
     setLoading(true);
     const token = localStorage.getItem("token");
-    const res = await axios.get("http://localhost:8080/api/blood-requests/admin/requests/completed", {
+    const res = await axios.get(apiUrl("api/blood-requests/admin/requests/completed"), {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -156,7 +157,7 @@ const approveBloodRequest = async (data) => {
   try {
     const token = localStorage.getItem("token");
     const res = await axios.put(
-      "http://localhost:8080/api/blood-requests/admin/requests/completed",
+      apiUrl("api/blood-requests/admin/requests/completed"),
       data,
       {
         headers: {
