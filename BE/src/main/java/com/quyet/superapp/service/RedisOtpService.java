@@ -2,6 +2,7 @@ package com.quyet.superapp.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +14,8 @@ import java.util.concurrent.TimeUnit;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class RedisOtpService {
+@ConditionalOnBean(RedisTemplate.class)
+public class RedisOtpService implements OtpService {
 
     private final RedisTemplate<String, String> redisTemplate;
 
@@ -25,6 +27,7 @@ public class RedisOtpService {
     /**
      * 🔐 Sinh OTP và lưu vào Redis (kèm reset số lần thử về 0)
      */
+    @Override
     public String generateOtp(String email) {
         String otp = generateRandomOtp();
         String otpKey = buildOtpKey(email);
@@ -40,6 +43,7 @@ public class RedisOtpService {
     /**
      * ✅ Kiểm tra OTP người dùng nhập và xử lý đếm số lần sai
      */
+    @Override
     public boolean validateOtp(String email, String inputOtp) {
         String otpKey = buildOtpKey(email);
         String attemptKey = buildAttemptKey(email);
