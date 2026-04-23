@@ -17,10 +17,10 @@ public class UrgentRequest {
     @Column(name = "UrgentRequest_Id")
     private Long urgentRequestId;
 
-    @Column(name = "HospitalName", columnDefinition = "NVARCHAR(100)", nullable = false)
+    @Column(name = "HospitalName", length = 100, nullable = false)
     private String hospitalName;
 
-    @Column(name = "BloodType", columnDefinition = "NVARCHAR(20)", nullable = false)
+    @Column(name = "BloodType", length = 20, nullable = false)
     private String bloodType;
 
     @Column(name = "Units", nullable = false)
@@ -30,7 +30,7 @@ public class UrgentRequest {
     private LocalDate requestDate;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "Status", columnDefinition = "NVARCHAR(20)")
+    @Column(name = "Status", length = 20)
     private BloodRequestStatus status;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -15,6 +15,6 @@ public class Occupation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name", unique = true, nullable = false, columnDefinition = "NVARCHAR(100)")
+    @Column(name = "name", unique = true, nullable = false, length = 100)
     private String name;
 }

@@ -42,10 +42,10 @@ public class Donation {
         @Column(name = "volume_ml")
         private Integer volumeMl;
 
-        @Column(name = "location", columnDefinition = "NVARCHAR(50)")
+        @Column(name = "location", length = 50)
         private String location;
 
-        @Column(name = "notes", columnDefinition = "NVARCHAR(200)")
+        @Column(name = "notes", length = 200)
         private String notes;
 
         @Column(name = "created_at")
@@ -55,7 +55,7 @@ public class Donation {
         private LocalDateTime updatedAt;
 
         @Enumerated(EnumType.STRING)
-        @Column(name = "status", columnDefinition = "NVARCHAR(20)")
+        @Column(name = "status", length = 20)
         private DonationStatus status;
 
 

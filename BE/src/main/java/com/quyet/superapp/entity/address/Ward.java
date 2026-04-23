@@ -21,7 +21,7 @@ public class Ward {
     @Column(name = "ward_id")
     private Long wardId;
 
-    @Column(name = "ward_name", columnDefinition = "NVARCHAR(50)", nullable = false)
+    @Column(name = "ward_name", length = 50, nullable = false)
     private String wardName;
 
     @ManyToOne(fetch = FetchType.LAZY)

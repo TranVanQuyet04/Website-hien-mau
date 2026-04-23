@@ -21,7 +21,7 @@ public class BloodComponent {
     @Column(name = "Blood_Component_ID")
     private Long bloodComponentId;
 
-    @Column(name = "NameBloodComponent", columnDefinition = "NVARCHAR(50)", nullable = false)
+    @Column(name = "NameBloodComponent", length = 50, nullable = false)
     private String name;
 
     @Column(name = "Code", columnDefinition = "VARCHAR(10)", nullable = false, unique = true)
@@ -34,7 +34,7 @@ public class BloodComponent {
     private Integer storageDays;
 
     // MySQL treats USAGE as a reserved keyword; force quoting for DDL.
-    @Column(name = "`Usage`", columnDefinition = "NVARCHAR(200)")
+    @Column(name = "`Usage`", length = 200)
     private String usage;
 
     @Column(name = "ApheresisCompatible")

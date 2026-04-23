@@ -23,7 +23,7 @@ public class District {
     @Column(name = "district_id")
     private Long districtId;
 
-    @Column(name = "district_name", columnDefinition = "NVARCHAR(50)", nullable = false)
+    @Column(name = "district_name", length = 50, nullable = false)
     private String districtName;
 
     @ManyToOne(fetch = FetchType.LAZY)

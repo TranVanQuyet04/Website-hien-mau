@@ -21,10 +21,10 @@ public class ChatLog {
     @JoinColumn(name = "User_Id")
     private User user;
 
-    @Column(name = "message", columnDefinition = "NVARCHAR(100)")
+    @Column(name = "message", length = 100)
     private String message;
 
-    @Column(name = "sender", columnDefinition = "NVARCHAR(20)")
+    @Column(name = "sender", length = 20)
     private String sender;
 
     @Column(name = "created_at", columnDefinition = "DATETIME")

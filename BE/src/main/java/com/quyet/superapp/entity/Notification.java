@@ -20,13 +20,14 @@ public class Notification {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @Column(name = "content", columnDefinition = "NVARCHAR(200)")
+    @Column(name = "content", length = 200)
     private String content;
 
     @Column(name = "sent_at", columnDefinition = "DATETIME")
     private LocalDateTime sentAt;
 
-    @Column(name = "[read]") // vẫn để SQL nhận đúng tên cột
+    // MySQL doesn't accept SQL Server-style [read] identifier quoting.
+    @Column(name = "`read`")
     private Boolean isRead;  // Java field đổi cho rõ nghĩa
 
     @Column(name = "created_at")

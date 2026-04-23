@@ -65,7 +65,7 @@ public class HealthCheckForm {
     @Column(name = "is_eligible")
     private Boolean isEligible;
 
-    @Column(name = "notes_by_staff", columnDefinition = "NVARCHAR(500)")
+    @Column(name = "notes_by_staff", length = 500)
     private String notesByStaff;
 
     @ManyToOne

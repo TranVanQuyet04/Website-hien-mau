@@ -31,6 +31,6 @@ public class RequestLog {
     @Column(name = "Timestamp")
     private LocalDateTime timestamp;
 
-    @Column(name = "Note", columnDefinition = "NVARCHAR(500)")
+    @Column(name = "Note", length = 500)
     private String note;
 }

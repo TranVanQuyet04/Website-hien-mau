@@ -29,6 +29,6 @@ public class UrgentDonorContactLog {
     @Column(name = "contacted_at")
     private LocalDateTime contactedAt;
 
-    @Column(name = "status", columnDefinition = "NVARCHAR(20)")
+    @Column(name = "status", length = 20)
     private String status; // Ví dụ: PENDING, CONTACTED, CONFIRMED
 }

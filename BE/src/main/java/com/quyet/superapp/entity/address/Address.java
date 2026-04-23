@@ -15,7 +15,7 @@ public class Address {
     @Column(name = "address_id")
     private Long addressId;
 
-    @Column(name = "name_street", columnDefinition = "NVARCHAR(50)", nullable = false)
+    @Column(name = "name_street", length = 50, nullable = false)
     private String addressStreet;
 
     @ManyToOne(fetch = FetchType.LAZY)
