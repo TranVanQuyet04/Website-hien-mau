@@ -23,7 +23,6 @@ import java.util.*;
 @RestController
 @RequestMapping("/api/blood-requests")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:5173")
 public class BloodRequestController {
 
     private final BloodRequestService requestService;
