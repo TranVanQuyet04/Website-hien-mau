@@ -1,6 +1,9 @@
 /* === src/pages/register/RegisterInformation.jsx === */
 import React, { useEffect } from "react";
+import OccupationDropdown from "../components/OccupationDropdown";
 import { useNavigate } from "react-router-dom";
+import AddressSelector from "../components/AddressSelector";
+
 import { 
   Form, 
   Input, 
@@ -232,72 +235,23 @@ const RegisterInformation = () => {
               </Col>
             </Row>
 
-            <Form.Item
-              label="Nghề nghiệp"
-              name="occupation"
-              rules={[
-                { required: true },
-                { min: 2, message: 'Nghề nghiệp phải có ít nhất 2 ký tự' },
-                { max: 30, message: 'Nghề nghiệp không được quá 30 ký tự' }
-              ]}
-              hasFeedback
-            >
-              <Input
-                size="large"
-                placeholder="Nhập nghề nghiệp hiện tại"
-                prefix={<UserOutlined />}
-                maxLength={30}
-              />
-            </Form.Item>
+        <Form.Item
+  label="Nghề nghiệp"
+  name="occupationId"
+  rules={[{ required: true, message: "Vui lòng chọn nghề nghiệp" }]}
+  hasFeedback
+>
+  <OccupationDropdown />
+</Form.Item>
+
 
             <Title level={5} style={{ marginTop: 24, marginBottom: 16 }}>
               <HomeOutlined style={{ marginRight: 8 }} />
               Địa chỉ thường trú
             </Title>
 
-            <Form.Item
-              label="Tỉnh/Thành phố"
-              name="province"
-              rules={[{ required: true }]}
-              hasFeedback
-            >
-              <Input
-                size="large"
-                placeholder="Nhập tỉnh/thành phố"
-                prefix={<HomeOutlined />}
-              />
-            </Form.Item>
+            <AddressSelector form={form} />
 
-            <Row gutter={16}>
-              <Col xs={24} md={12}>
-                <Form.Item
-                  label="Quận/Huyện"
-                  name="district"
-                  rules={[{ required: true }]}
-                  hasFeedback
-                >
-                  <Input
-                    size="large"
-                    placeholder="Nhập quận/huyện"
-                    prefix={<HomeOutlined />}
-                  />
-                </Form.Item>
-              </Col>
-              <Col xs={24} md={12}>
-                <Form.Item
-                  label="Phường/Xã"
-                  name="ward"
-                  rules={[{ required: true }]}
-                  hasFeedback
-                >
-                  <Input
-                    size="large"
-                    placeholder="Nhập phường/xã"
-                    prefix={<HomeOutlined />}
-                  />
-                </Form.Item>
-              </Col>
-            </Row>
 
             <Form.Item
               label="Số nhà, tên đường"

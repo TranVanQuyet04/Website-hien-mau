@@ -25,6 +25,8 @@ public class DataInitializer implements ApplicationRunner {
     private final UserRepository userRepo;
     private final RoleRepository roleRepo;
     private final PasswordEncoder passwordEncoder;
+    private final OccupationRepository occupationRepo;
+
 
 
     @Override
@@ -34,8 +36,39 @@ public class DataInitializer implements ApplicationRunner {
         initBloodTypes();
         initBloodComponents();
         initBloodPrices();
+        initOccupations();
         initAdminUser();
     }
+
+    private void initOccupations() {
+        if (occupationRepo.count() > 0) {
+            log.info("📄 Danh sách nghề nghiệp đã tồn tại, bỏ qua khởi tạo.");
+            return;
+        }
+
+        List<String> occupations = List.of(
+                "Bác sĩ", "Bảo vệ", "Bộ đội", "Buôn bán", "Ca sỹ", "Cán bộ", "Cán bộ nhân viên",
+                "Cảnh sát", "Chiến sĩ", "Chuyên viên", "Công an", "Công nhân", "Công nhân viên chức",
+                "Cử nhân xét nghiệm", "Diễn viên", "Điều dưỡng", "Đoàn viên", "Dược sỹ", "Giám đốc",
+                "Giáo viên", "Hộ lý", "Học sinh", "Học viên", "Hướng dẫn viên du lịch", "Hưu trí",
+                "Kế toán", "Khác", "Kiến trúc sư", "Kinh doanh", "Kỹ sư", "Kỹ thuật viên", "Lái xe",
+                "Làm biển", "Làm nông", "Làm thuê", "Luật sư", "Nhân viên", "Nhân viên kinh doanh",
+                "Nhân viên văn phòng", "Nội trợ", "Nữ hộ sinh", "Nv mạng máy vi tính", "Phiên dịch",
+                "Phó giám đốc", "Phóng viên", "Quản lý", "Sinh viên", "Sửa xe", "Thiết kế", "Thợ cắt tóc",
+                "Thợ điện", "Thợ hàn", "Thợ hồ", "Thợ may", "Thợ máy", "Thợ sơn", "Thư ký", "Tiếp viên",
+                "Tự do", "Tu sĩ", "Uốn tóc", "Văn thư", "Viên chức", "Xây dựng", "Y công", "Y sĩ đa khoa",
+                "Y tá"
+        );
+
+        for (String name : occupations) {
+            Occupation o = new Occupation();
+            o.setName(name);
+            occupationRepo.save(o);
+        }
+
+        log.info("📄 Đã khởi tạo {} nghề nghiệp mặc định.", occupations.size());
+    }
+
 
 
     private void initRoles() {
