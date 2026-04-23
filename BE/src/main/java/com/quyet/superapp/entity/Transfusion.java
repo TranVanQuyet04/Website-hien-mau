@@ -32,22 +32,22 @@ public class Transfusion {
     @Column(name = "transfusion_date", columnDefinition = "DATETIME")
     private LocalDateTime transfusionDate;
 
-    @Column(name = "status", columnDefinition = "NVARCHAR(20)")
+    @Column(name = "status", length = 20)
     private String status;
 
-    @Column(name = "notes", columnDefinition = "NVARCHAR(200)")
+    @Column(name = "notes", length = 200)
     private String notes;
 
     @Column(name = "volume_taken_ml")
     private Integer volumeTakenMl;
 
-    @Column(name = "recipient_name", columnDefinition = "NVARCHAR(100)")
+    @Column(name = "recipient_name", length = 100)
     private String recipientName;
 
-    @Column(name = "recipient_phone", columnDefinition = "NVARCHAR(20)")
+    @Column(name = "recipient_phone", length = 20)
     private String recipientPhone;
 
-    @Column(name = "approved_by", columnDefinition = "NVARCHAR(50)")
+    @Column(name = "approved_by", length = 50)
     private String approvedBy;
 
 }

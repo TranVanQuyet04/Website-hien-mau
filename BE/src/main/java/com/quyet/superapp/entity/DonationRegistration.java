@@ -36,10 +36,10 @@ public class DonationRegistration {
     @Column(name = "Status", length = 20)
     private DonationStatus status;
 
-    @Column(name = "location", columnDefinition = "NVARCHAR(100)")
+    @Column(name = "location", length = 100)
     private String location;
 
-    @Column(name = "blood_type", columnDefinition = "NVARCHAR(20)")
+    @Column(name = "blood_type", length = 20)
     private String bloodType;
 
     @Column(name = "created_at")

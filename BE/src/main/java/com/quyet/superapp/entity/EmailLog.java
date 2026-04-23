@@ -22,22 +22,23 @@ public class EmailLog {
     @JoinColumn(name = "User_Id")
     private User user;
 
-    @Column(name = "recipient_email", nullable = false)
+    @Column(name = "recipient_email", nullable = false, length = 255)
     private String recipientEmail;
 
-    @Column(name = "subject", columnDefinition = "NVARCHAR(255)")
+    @Column(name = "subject", length = 255)
     private String subject;
 
-    @Column(name = "body", columnDefinition = "NTEXT")
+    @Lob
+    @Column(name = "body", columnDefinition = "LONGTEXT")
     private String body;
 
-    @Column(name = "`type`", columnDefinition = "NVARCHAR(50)")
+    @Column(name = "`type`", length = 50)
     private String type;
 
     @Column(name = "sent_at")
     private LocalDateTime sentAt;
 
-    @Column(name = "`status`", columnDefinition = "VARCHAR(20)")
+    @Column(name = "`status`", length = 20)
     private String status; // SUCCESS, FAILED
 
 }

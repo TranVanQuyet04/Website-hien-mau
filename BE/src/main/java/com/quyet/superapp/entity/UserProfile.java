@@ -29,13 +29,13 @@ public class UserProfile {
     @JoinColumn(name = "User_Id")
     private User user;
 
-    @Column(name = "full_name", columnDefinition = "NVARCHAR(50)")
+    @Column(name = "full_name", length = 50)
     private String fullName;
 
     @Column(name = "dob")
     private LocalDate dob;
 
-    @Column(name = "gender", columnDefinition = "NVARCHAR(10)")
+    @Column(name = "gender", length = 10)
     private String gender;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -67,7 +67,7 @@ public class UserProfile {
     @Column(name = "recovery_time")
     private Integer recoveryTime;
 
-    @Column(name = "location", columnDefinition = "NVARCHAR(100)")
+    @Column(name = "location", length = 100)
     private String location;
 
     @Column(name = "latitude")
@@ -76,13 +76,13 @@ public class UserProfile {
     @Column(name = "longitude")
     private Double longitude;
 
-    @Column(name = "staff_position", columnDefinition = "NVARCHAR(30)")
+    @Column(name = "staff_position", length = 30)
     private String staffPosition;
 
-    @Column(name = "occupation", columnDefinition = "NVARCHAR(50)")
+    @Column(name = "occupation", length = 50)
     private String occupation;
 
-    @Column(name = "note", columnDefinition = "NVARCHAR(255)")
+    @Column(name = "note", length = 255)
     private String note;
 
     @Column(name = "created_at")

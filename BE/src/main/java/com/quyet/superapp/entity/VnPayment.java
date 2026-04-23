@@ -32,7 +32,7 @@ public class VnPayment {
     @Column(name = "Payment_Time", columnDefinition = "DATETIME")
     private LocalDateTime paymentTime;
 
-    @Column(name = "Transaction_Code", columnDefinition = "NVARCHAR(100)")
+    @Column(name = "Transaction_Code", length = 100)
     private String transactionCode;
 
     @Enumerated(EnumType.STRING)

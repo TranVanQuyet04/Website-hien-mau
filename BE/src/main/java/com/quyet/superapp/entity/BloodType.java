@@ -18,16 +18,16 @@ public class BloodType {
     @Column(name = "BloodTypeID")
     private Long bloodTypeId;
 
-    @Column(name = "Description", columnDefinition = "NVARCHAR(20)", nullable = false)
+    @Column(name = "Description", length = 20, nullable = false)
     private String description; // A, B, AB, O
 
     @Column(name = "Rh", columnDefinition = "VARCHAR(10)", nullable = false)
     private String rh; // "+" hoặc "-"
 
-    @Column(name = "Note", columnDefinition = "NVARCHAR(100)")
+    @Column(name = "Note", length = 100)
     private String note; // ví dụ: "Phổ biến", "Rất hiếm", "Toàn năng"
 
-    @Column(name = "IsActive", nullable = false, columnDefinition = "BIT DEFAULT 1")
+    @Column(name = "IsActive", nullable = false)
     private Boolean isActive = true;
 
     @Column(name = "Code", columnDefinition = "VARCHAR(10)", nullable = false, unique = true)

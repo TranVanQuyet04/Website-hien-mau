@@ -15,6 +15,6 @@
         @Column(name = "city_id")
         private Long cityId;
 
-        @Column(name = "name_city", columnDefinition = "NVARCHAR(50)")
+        @Column(name = "name_city", length = 50)
         private String nameCity;
     }

@@ -15,13 +15,13 @@ public class SeparationPresetConfig {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "gender", columnDefinition = "NVARCHAR(10)")
+    @Column(name = "gender", length = 10)
     private String gender; // male / female
 
     @Column(name = "min_weight")
     private int minWeight; // ngưỡng cân nặng từ bao nhiêu kg
 
-    @Column(name = "method", columnDefinition = "NVARCHAR(20)")
+    @Column(name = "method", length = 20)
     private String method; // ly tâm, gạn tách
 
     @Column(name = "leukoreduced")

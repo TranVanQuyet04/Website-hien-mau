@@ -24,7 +24,7 @@ public class DonorProfile {
     @Column(name = "readiness_level", length = 30)
     private DonorReadinessLevel readinessLevel;
 
-    @Column(name = "note", columnDefinition = "NVARCHAR(255)")
+    @Column(name = "note", length = 255)
     private String note;
 
     public DonorProfile(User user) {
