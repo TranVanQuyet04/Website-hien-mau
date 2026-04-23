@@ -31,6 +31,7 @@ import {
   WarningOutlined,
 } from "@ant-design/icons";
 import "../styles/staff.css";
+import { apiUrl } from "../config/api";
 
 ChartJS.register(
   CategoryScale,
@@ -77,7 +78,7 @@ const InventoryChart = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const bloodUnitsRes = await fetch("/api/blood-units");
+        const bloodUnitsRes = await fetch(apiUrl("api/blood-units"));
         const bloodUnits = await bloodUnitsRes.json();
         setRawData(bloodUnits);
         setModalContent(bloodUnits);
@@ -96,7 +97,7 @@ const InventoryChart = () => {
 
   const openBloodUnitsDetails = async () => {
     try {
-      const res = await fetch("/api/blood-units");
+      const res = await fetch(apiUrl("api/blood-units"));
       const data = await res.json();
       setModalContent(data);
       setModalOpen(true);

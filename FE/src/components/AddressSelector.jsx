@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Form, Select } from "antd";
 import { HomeOutlined } from "@ant-design/icons";
 import axios from "axios";
+import { apiUrl } from "../config/api";
 
 const { Option } = Select;
 
@@ -21,9 +22,14 @@ const AddressSelector = ({ form }) => {
       form.setFieldsValue({ province: defaultCity.name });
       setLoadingDistricts(true);
       try {
-        const res = await axios.get(`/api/districts/by-city?cityId=${defaultCity.id}&t=${Date.now()}`);
+        const res = await axios.get(
+          apiUrl(`api/districts/by-city?cityId=${defaultCity.id}&t=${Date.now()}`)
+        );
         console.log("📦 Districts API response:", res.data);
-        console.log("📦 Đang gọi API:", `/api/districts/by-city?cityId=${defaultCity.id}&t=${Date.now()}`);
+        console.log(
+          "📦 Đang gọi API:",
+          `/api/districts/by-city?cityId=${defaultCity.id}&t=${Date.now()}`
+        );
 console.log("📦 Districts API response (raw):", res);
 console.log("📦 Districts API response (data):", res.data);
 
@@ -48,7 +54,9 @@ console.log("📦 Districts API response (data):", res.data);
     setWards([]); // Clear danh sách cũ
     setLoadingWards(true);
     try {
-      const res = await axios.get(`/api/wards/by-district?districtId=${districtId}&t=${Date.now()}`);
+      const res = await axios.get(
+        apiUrl(`api/wards/by-district?districtId=${districtId}&t=${Date.now()}`)
+      );
       console.log("🏘️ Wards API response:", res.data);
 
       const result = Array.isArray(res.data) ? res.data : res.data?.data || [];

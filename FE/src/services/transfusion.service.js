@@ -1,7 +1,8 @@
 import axios from "axios";
+import { apiUrl } from "../config/api";
 
 export const getAllTransfusions = async () => {
-  return await axios.get("/api/transfusions");
+  return await axios.get(apiUrl("api/transfusions"));
 };
 
 /**
@@ -9,7 +10,7 @@ export const getAllTransfusions = async () => {
  * @param {string|number} userId - ID người dùng.
  */
 export const getUserTransfusions = (userId) => {
-  return axios.get(`/api/transfusions/user/${userId}`);
+  return axios.get(apiUrl(`api/transfusions/user/${userId}`));
 };
 
 /**
@@ -17,5 +18,5 @@ export const getUserTransfusions = (userId) => {
  * @param {object} data - Dữ liệu truyền máu { recipientName, bloodType, units }.
  */
 export const confirmTransfusion = (data) => {
-  return axios.post("/api/transfusions", data);
+  return axios.post(apiUrl("api/transfusions"), data);
 };
