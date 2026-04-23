@@ -48,7 +48,7 @@ public class UserService {
     private final UserProfileRepository userProfileRepository;
     private final AddressMapper addressMapper;
     private final DonorProfileRepository donorProfileRepository;
-    private final RedisOtpService redisOtpService;
+    private final OtpService otpService;
     private final EmailService emailService;
 
     /**
@@ -176,7 +176,7 @@ public class UserService {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("Email không tồn tại trong hệ thống."));
 
-        String otp = redisOtpService.generateOtp(email);
+        String otp = otpService.generateOtp(email);
 
         String displayName = (user.getUserProfile() != null && user.getUserProfile().getFullName() != null)
                 ? user.getUserProfile().getFullName()
@@ -197,7 +197,7 @@ public class UserService {
     }
 
     public void resetPassword(String email, String otp, String newPassword) {
-        if (!redisOtpService.validateOtp(email, otp)) {
+        if (!otpService.validateOtp(email, otp)) {
             throw new RuntimeException("Mã OTP không hợp lệ hoặc đã hết hạn.");
         }
 
