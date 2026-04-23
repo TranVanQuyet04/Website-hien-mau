@@ -12,4 +12,6 @@ public interface WardRepository extends JpaRepository<Ward, Long> {
 
     // ✅ Tìm theo tên phường (bỏ qua hoa thường)
     Optional<Ward> findByWardNameIgnoreCase(String wardName);
+
+    boolean existsByWardNameIgnoreCaseAndDistrict_DistrictId(String wardName, Long districtId);
 }

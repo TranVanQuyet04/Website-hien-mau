@@ -8,4 +8,5 @@ import java.util.List;
 public interface DistrictRepository extends JpaRepository<District, Long> {
     List<District> findByCity_CityId(Long cityId);
 
+    boolean existsByDistrictNameIgnoreCaseAndCity_CityId(String districtName, Long cityId);
 }
