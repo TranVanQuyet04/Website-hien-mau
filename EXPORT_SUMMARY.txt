@@ -1,0 +1,26 @@
+﻿==============================
+PROJECT EXPORT SUMMARY
+==============================
+
+Project name      : Website-hien-mau1
+GitHub URL        : https://github.com/TranVanQuyet04/Website-hien-mau1.git
+Start date (Git)  : 2025-08-02
+Last update (Git) : 2025-08-02
+Total commits     : 11
+
+Code statistics (BE+FE)
+- Java files (BE) : 395
+- JS/TS files (FE): 39985
+- Total files     : 54357
+- Lines of code   : 3635919
+
+Structure
+- BE folder: True
+- FE folder: True
+
+Members
+- <Tên SV 1 - MSSV>
+- <Tên SV 2 - MSSV>
+- <Tên SV 3 - MSSV>
+
+Generated at: 2026-01-10 11:09

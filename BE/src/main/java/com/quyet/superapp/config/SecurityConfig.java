@@ -97,6 +97,11 @@ public class SecurityConfig {
             "/api/blog/**",
             "/api/public/**",
 
+            "/api/occupations",
+            "/api/cities/**",
+            "/api/districts/**",
+            "/api/wards/**",
+
             // ➕ Cho phép Swagger/OpenAPI
             "/v3/api-docs/**",
             "/swagger-ui/**",
