@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "EmailLogs")
+@Table(name = "email_logs")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -31,13 +31,13 @@ public class EmailLog {
     @Column(name = "body", columnDefinition = "NTEXT")
     private String body;
 
-    @Column(name = "type", columnDefinition = "NVARCHAR(50)")
+    @Column(name = "`type`", columnDefinition = "NVARCHAR(50)")
     private String type;
 
     @Column(name = "sent_at")
     private LocalDateTime sentAt;
 
-    @Column(name = "status", columnDefinition = "VARCHAR(20)")
+    @Column(name = "`status`", columnDefinition = "VARCHAR(20)")
     private String status; // SUCCESS, FAILED
 
 }
