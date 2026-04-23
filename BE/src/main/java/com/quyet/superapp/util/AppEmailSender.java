@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class AppEmailSender {
 
+
     private final JavaMailSender mailSender;
     private final DefaultEmailTemplateBuilder templateBuilder;
 
